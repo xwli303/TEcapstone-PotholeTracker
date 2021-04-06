@@ -6,6 +6,7 @@
         {{ registrationErrorMsg }}
       </div>
       <label for="username" class="sr-only">Username</label>
+      <br>
       <input
         type="text"
         id="username"
@@ -15,7 +16,9 @@
         required
         autofocus
       />
+      <br>
       <label for="password" class="sr-only">Password</label>
+      <br>
       <input
         type="password"
         id="password"
@@ -32,10 +35,12 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      <br>
+      <router-link :to="{ name: 'login' }">Have an account?</router-link>
     </form>
   </div>
 </template>
@@ -90,4 +95,46 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#register{
+    background-image: url(https://cdn10.phillymag.com/wp-content/uploads/sites/3/2020/03/philadelphia-coronavirus-shutdown-photos.jpg);
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
+  .form-register{
+    background-color: rgba(194, 190, 190, 0.808);
+    position:fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    border-radius: 15px;
+    padding: 30px 0px 50px 80px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+
+  label{
+    font-weight: 500;
+  }
+
+  input{
+    border-radius: 3px;
+    border:none;
+    height: 30px;
+    width: 60%;
+    margin-bottom: 10px;
+    padding-left: 8px;
+  }
+
+  button{
+    width:250px;
+    height:30px;
+    border-radius: 3px;
+    border:none;
+    margin:10px 0px 10px 0px;
+    
+  }
+
+</style>
