@@ -2,7 +2,9 @@ package com.techelevator.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.model.Pothole;
@@ -17,8 +19,13 @@ public class PotholeController {
 		this.potholeServices = potholeServices;
 	}
 	
-	@RequestMapping(path = "/pothole")
+	@RequestMapping(path = "/all-potholes", method = RequestMethod.GET)
 	public List<Pothole> getAllPotholes(){
 		return potholeServices.getAllPotholes();
+	}
+	
+	@RequestMapping(path = "/all-potholes/ordered-by-{orderBy}", method = RequestMethod.GET)
+	public List<Pothole> getFilteredListOfPotholes(@PathVariable String orderBy){
+		return potholeServices.getFilteredListOfPotholes(orderBy);
 	}
 }
