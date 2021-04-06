@@ -1,5 +1,10 @@
 BEGIN TRANSACTION;
-
+DROP TABLE IF EXISTS jobs;
+DROP TABLE IF EXISTS job_status;
+DROP TABLE IF EXISTS potholes;
+DROP TABLE IF EXISTS severity;
+DROP TABLE IF EXISTS ranking;
+DROP TABLE IF EXISTS status;
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
 
@@ -21,5 +26,72 @@ CREATE TABLE users (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
+CREATE TABLE severity (
+        severity_id int NOT NULL,
+        severity_description varchar(50) NOT NULL,
+        CONSTRAINT PK_severity PRIMARY KEY (severity_id)
+        );
+INSERT INTO severity ( severity_id, severity_description ) VALUES ( 1, 'Bump in the Road' );
+INSERT INTO severity ( severity_id, severity_description ) VALUES ( 2, 'Serious Thud' );
+INSERT INTO severity ( severity_id, severity_description ) VALUES ( 3, 'Flat Tire' );
+INSERT INTO severity ( severity_id, severity_description ) VALUES ( 4, 'Lost my Wheel' );
+INSERT INTO severity ( severity_id, severity_description ) VALUES ( 5, 'Car Swallower' );
+
+
+CREATE TABLE status (
+        status_id int NOT NULL,
+        status_description varchar(50) NOT NULL,
+        CONSTRAINT PK_status PRIMARY KEY (status_id)
+        );
+INSERT INTO status ( status_id, status_description ) VALUES ( 1, 'Reported' );
+INSERT INTO status ( status_id, status_description ) VALUES ( 2, 'Inspected' );
+INSERT INTO status ( status_id, status_description ) VALUES ( 3, 'Repaired' );
+ 
+       
+CREATE TABLE potholes (
+        pothole_id serial NOT NULL,
+        latitude float,
+        longitude float,
+        severity_id int,
+        status_id int,
+        date_reported DATE,
+        date_inspected DATE,
+        date_repaired DATE,
+        user_id int,
+        CONSTRAINT PK_potholes PRIMARY KEY (pothole_id)
+);
+
+INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.9056, -75.1742, 3, 1, '2021-04-06',2 );
+INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.9470, -75.1444, 3, 1, '2021-04-06', 2 );
+INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.95221, -75.16851, 2, 1, '2021-04-06', 2 );
+INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.9613, -75.1465, 3, 1, '2021-04-06', 2 );
+ 
+        
+ALTER TABLE potholes ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
+ALTER TABLE potholes ADD FOREIGN KEY (severity_id) REFERENCES severity(severity_id);
+ALTER TABLE potholes ADD FOREIGN KEY (status_id) REFERENCES status(status_id);
+
+CREATE TABLE job_status (
+        status_id int NOT NULL,
+        Status_description varchar(50) NOT NULL,
+        CONSTRAINT PK_job_status PRIMARY KEY (status_id)
+);
+        
+
+CREATE TABLE jobs (
+        job_id serial NOT NULL,
+        pothole_id int NOT NULL,
+        employee_id int NOT NULL,
+        job_status int NOT NULL,
+        opened_date DATE,
+        closed_date DATE
+);
+
+ALTER TABLE jobs ADD FOREIGN KEY (pothole_id) REFERENCES potholes(pothole_id);
+ALTER TABLE jobs ADD FOREIGN KEY (job_status) REFERENCES job_status(status_id);
+
+
 
 COMMIT TRANSACTION;
+select * FROM POTHOLES;
+select * from users
