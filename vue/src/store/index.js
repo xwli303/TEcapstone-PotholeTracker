@@ -28,7 +28,15 @@ export default new Vuex.Store({
             lat: 39.95177517038331, 
             lng: -75.15990870472494 
           } 
-      } 
+      },
+      { 
+        id: 2,
+        location: 
+          {
+            lat: 39.94992,
+            lng: -75.16254
+          }
+      }
     ]
   },
   mutations: {

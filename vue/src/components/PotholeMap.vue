@@ -2,16 +2,18 @@
     <div>
         <!-- <div id="map" ref="map"></div> -->
         <GmapMap
-            :center="{lat: 39.9528, lng: -75.1635}"
-            :zoom="13"
+            v-bind:center="{lat: 39.9528, lng: -75.1635}"
+            v-bind:zoom="15"
             map-type-id="terrain"
             style="width: 800px; height: 800px"
         >
-        <!-- <GMapMarker 
-        v-bind:key="index" 
-        v-for="(pothole, index) in $store.state.potholes"
-        v-bind:position="pothole.location"
-        /> -->
+            <gmap-marker 
+                v-for="(pothole, index) in $store.state.potholes"
+                v-bind:key="index" 
+                v-bind:position="pothole.location"
+                v-bind:clickable="true"
+                v-bind:draggable="true"
+            />
         </GmapMap>
     </div>
 </template>
