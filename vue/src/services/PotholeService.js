@@ -6,7 +6,7 @@ export default{
     },
 
     listAllPotholesOrdered(orderBy){
-        return axios.get(`/all-potholes-ordered-by/${orderBy}`);
+        return axios.get(`/all-potholes/ordered-by/${orderBy}`);
     }
 
 
