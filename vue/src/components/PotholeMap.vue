@@ -37,10 +37,13 @@ export default {
                 center: { lat: 39.9528, lng: -75.1635 },
                 zoom: 15
             });
-            console.log(this.map);
+            let lat;
+            let lng;
             for (let i = 0; i < this.$store.state.potholes.length; i++) {
+                lat = this.$store.state.potholes[i].latitude;
+                lng = this.$store.state.potholes[i].longitude;
                 const marker = new window.google.maps.Marker({
-                    position: this.$store.state.potholes[i].location,
+                    position: { lat, lng }
                 });
                 marker.setMap(this.map);
             }
