@@ -2,18 +2,21 @@
     <div class="side-container">
         <div class="topline">HOME</div>
         <div class="add-pothole">
-            <form id="report-pothole">
-                <input type="text">
-            </form>
+            <new-pothole-form/>
         </div>
     </div>
 </template>
 
 <script>
+import NewPotholeForm from './NewPotholeForm.vue'
 export default {
-    name: "SideMenu"
+    name: "SideMenu",
+    components: {
+        NewPotholeForm
+    }
 }
 </script>
+
 
 <style>
 .side-container {

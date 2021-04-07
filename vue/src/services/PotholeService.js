@@ -7,6 +7,10 @@ export default{
 
     listAllPotholesOrdered(orderBy){
         return axios.get(`/all-potholes/ordered-by/${orderBy}`);
+    },
+
+    reportPothole(pothole){
+        return axios.post('/report-pothole', pothole);
     }
 
 
