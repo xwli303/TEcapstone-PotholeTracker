@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.model.Pothole;
-
-import Services.PotholeServices;
+import com.techelevator.services.PotholeServices;
 
 @RestController
 public class PotholeController {
