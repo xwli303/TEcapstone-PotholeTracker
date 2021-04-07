@@ -3,6 +3,13 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
+import * as VueGoogleMaps from 'vue2-google-maps'
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyDRcIpT0bxsU80JISszJUMH2uyxYpZ2I-w'
+  }
+});
 
 Vue.config.productionTip = false
 
