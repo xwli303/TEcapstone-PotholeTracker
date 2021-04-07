@@ -1,10 +1,11 @@
 BEGIN TRANSACTION;
 DROP TABLE IF EXISTS jobs;
 DROP TABLE IF EXISTS job_status;
+
 DROP TABLE IF EXISTS potholes;
 DROP TABLE IF EXISTS severity;
-DROP TABLE IF EXISTS ranking;
 DROP TABLE IF EXISTS status;
+
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
 
@@ -47,7 +48,7 @@ INSERT INTO status ( status_id, status_description ) VALUES ( 1, 'Reported' );
 INSERT INTO status ( status_id, status_description ) VALUES ( 2, 'Inspected' );
 INSERT INTO status ( status_id, status_description ) VALUES ( 3, 'Repaired' );
  
-       
+     
 CREATE TABLE potholes (
         pothole_id serial NOT NULL,
         latitude float,
@@ -93,5 +94,4 @@ ALTER TABLE jobs ADD FOREIGN KEY (job_status) REFERENCES job_status(status_id);
 
 
 COMMIT TRANSACTION;
-select * FROM POTHOLES;
-select * from users
+

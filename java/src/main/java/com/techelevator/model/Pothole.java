@@ -11,9 +11,11 @@ public class Pothole {
 	private LocalDate dateReported;
 	private LocalDate dateInspected;
 	private LocalDate dateRepaired;
-	private String dateReportedToString;
-	private String dateInspectedToString;
-	private String dateRepairedToString;
+//	private String dateReportedToString;
+//	private String dateInspectedToString;
+//	private String dateRepairedToString;
+	private int user_id;
+	
 	public long getId() {
 		return id;
 	}
@@ -62,14 +64,20 @@ public class Pothole {
 	public void setDateRepaired(LocalDate dateRepaired) {
 		this.dateRepaired = dateRepaired;
 	}
-	public String getDateReportedToString() {
-		return dateReported.toString();
+//	public String getDateReportedToString() {
+//		return dateReported.toString();
+//	}
+//	public String getDateInspectedToString() {
+//		return dateInspected.toString();
+//	}
+//	public String getDateRepairedToString() {
+//		return dateRepaired.toString();
+//	}
+	public int getUser_id() {
+		return user_id;
 	}
-	public String getDateInspectedToString() {
-		return dateInspected.toString();
-	}
-	public String getDateRepairedToString() {
-		return dateRepaired.toString();
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 	
 	

@@ -11,7 +11,11 @@ import com.techelevator.model.Pothole;
 
 @Component
 public class JdbcPotholeDAO implements PotholeDAO {
+	
 	private JdbcTemplate jdbcTemplate;
+	public JdbcPotholeDAO(JdbcTemplate jdbcTemplate  ) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
 	
 	@Override
 	public List<Pothole> getFilteredListOfPotholes(String orderBy) {
@@ -76,9 +80,10 @@ public class JdbcPotholeDAO implements PotholeDAO {
 		pothole.setLongitude(row.getDouble("longitude"));
 		pothole.setSeverity(row.getInt("severity_id"));
 		pothole.setStatusCode(row.getInt("status_id"));
-		pothole.setDateInspected(row.getDate("date_inspected").toLocalDate());
-		pothole.setDateRepaired(row.getDate("date_repaired").toLocalDate());
+		//pothole.setDateInspected(row.getDate("date_inspected").toLocalDate());
+		//pothole.setDateRepaired(row.getDate("date_repaired").toLocalDate());
 		pothole.setDateReported(row.getDate("date_reported").toLocalDate());
+		pothole.setUser_id(row.getInt("user_id"));
 		return pothole;
 	}
 
