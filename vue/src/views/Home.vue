@@ -2,18 +2,15 @@
   <div class="home">
     <h1>Home</h1>
     <p>You must be authenticated to see this</p>
-    <pothole-list> </pothole-list>
-
+    <pothole-map />
   </div>
 </template>
 
 <script>
-import PotholeList from '../components/PotholeList.vue';
+import PotholeMap from "@/components/PotholeMap";
 export default {
   name: "home",
-  components: { 
-    PotholeList 
-    }
+  components: { PotholeMap }
 };
 </script>
 
