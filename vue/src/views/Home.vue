@@ -8,9 +8,16 @@
 
 <script>
 import PotholeMap from "@/components/PotholeMap";
+import PotholeService from "@/services/PotholeService";
 export default {
   name: "home",
-  components: { PotholeMap }
+  components: { PotholeMap },
+  created(){
+        PotholeService.listPotholes()
+        .then((response) => {
+            this.$store.state.potholes = response.data;
+        })
+    }
 };
 </script>
 
