@@ -3,14 +3,14 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
-import * as GmapVue from 'gmap-vue'
+// import * as GmapVue from 'gmap-vue'
 
-Vue.use(GmapVue, {
-  load: {
-    key: 'AIzaSyDRcIpT0bxsU80JISszJUMH2uyxYpZ2I-w'
-  },
-  installComponents: true
-});
+// Vue.use(GmapVue, {
+//   load: {
+//     key: 'AIzaSyDRcIpT0bxsU80JISszJUMH2uyxYpZ2I-w'
+//   },
+//   installComponents: true
+// });
 
 Vue.config.productionTip = false
 
