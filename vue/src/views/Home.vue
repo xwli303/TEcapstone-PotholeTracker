@@ -46,7 +46,7 @@ export default {
   right: 0;
   height: 100%;
   position: fixed;
-  z-index: 1;
+  /* z-index: 1; */
   left: 0;
   top: 0;
 }

@@ -9,5 +9,9 @@
 </template>
 
 <style>
+  #nav{
+    position: absolute;
+    z-index: 1;
+  }
   
 </style>
