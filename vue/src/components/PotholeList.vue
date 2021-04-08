@@ -2,6 +2,7 @@
     <div class="list">
         <div v-for="pothole in potholes" v-bind:key="pothole.id" class="pothole">
             {{pothole}}
+            
         </div>
 
     </div>
