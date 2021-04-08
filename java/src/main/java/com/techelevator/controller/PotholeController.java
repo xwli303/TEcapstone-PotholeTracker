@@ -38,8 +38,7 @@ public class PotholeController {
 	public void reportPothole( @RequestBody Pothole newPothole) {
 		potholeServices.reportPothole(newPothole);
 	}
-	
-	// new methods that need review below
+
 	@RequestMapping(path = "/all-potholes/get-pothole-by-id/{id}", method = RequestMethod.GET)
     public Pothole getPotholeById(@PathVariable long id) {
         return potholeServices.getPotholeById(id);
