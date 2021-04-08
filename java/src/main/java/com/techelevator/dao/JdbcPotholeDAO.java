@@ -63,19 +63,29 @@ public class JdbcPotholeDAO implements PotholeDAO {
 	public Pothole getPotholeById(long id) {
 		String sqlGetPothole = "SELECT * FROM potholes WHERE pothole_id = ?";
 		
-		return null;
+		Pothole pothole = new Pothole();
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetPothole, id);
+		
+		while(results.next()) {
+			pothole = mapRowToPothole(results);
+		}
+		return pothole;
 	}
 
 	@Override
-	public void updatePotholeById(Pothole updatedPothole, long id) {
-		// TODO Auto-generated method stub
+	public void updatePotholeById(long id, Pothole pothole) {
+		String sqlUpdatePothole = "UPDATE potholes " + 
+				"SET status_id = ?, severity_id = ? " + 
+				"WHERE pothole_id = ? ";
+		jdbcTemplate.update(sqlUpdatePothole, pothole.getStatusCode(), pothole.getSeverity(), id);
 
 	}
 
 	@Override
 	public void deletePotholeById(long id) {
-		// TODO Auto-generated method stub
-
+		String sqlDeletePothole = "DELETE FROM potholes WHERE pothole_id = ?";
+		jdbcTemplate.update(sqlDeletePothole, id);
 	}
 	
 	private Pothole mapRowToPothole(SqlRowSet row) {

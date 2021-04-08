@@ -25,4 +25,16 @@ public class PotholeServices {
 	public void reportPothole(Pothole newPothole) {
 		potholeDAO.reportPothole(newPothole);
 	}
+	
+	public Pothole getPotholeById(long id) {
+		return potholeDAO.getPotholeById(id);
+	}
+	
+	public void updatePotholeById(long id, Pothole pothole) {
+		potholeDAO.updatePotholeById(id, pothole);
+	}
+	
+	public void deletePotholeById(long id) {
+		potholeDAO.deletePotholeById(id);
+	}
 }

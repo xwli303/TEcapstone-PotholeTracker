@@ -13,7 +13,7 @@ public interface PotholeDAO {
 	
 	public Pothole getPotholeById(long id);
 	
-	public void updatePotholeById(Pothole updatedPothole, long id);
+	public void updatePotholeById (long id, Pothole pothole);
 	
 	public void deletePotholeById(long id);
 	
