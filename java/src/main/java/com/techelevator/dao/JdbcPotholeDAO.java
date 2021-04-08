@@ -52,6 +52,11 @@ public class JdbcPotholeDAO implements PotholeDAO {
 	@Override
 	public void reportPothole(Pothole newPothole) {
 		
+		String sqlReportPothole = "INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) " + ""
+				+ "VALUES ( ?, ?, ?, ?, ?, ? )";
+		jdbcTemplate.update(sqlReportPothole, newPothole.getLatitude(), newPothole.getLongitude(), newPothole.getSeverity(), 
+				1, newPothole.getDateReported(), newPothole.getUser_id());
+		
 	}
 
 	@Override

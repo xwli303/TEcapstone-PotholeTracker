@@ -37,6 +37,8 @@
       <br>
       <button type="submit">Sign in</button>
       <br>
+      <button>Guest Account </button>
+      <br>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
     </form>
   </div>
