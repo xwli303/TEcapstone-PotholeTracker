@@ -18,7 +18,7 @@ export default {
     PotholeMap,
     SideMenu
   },
-  created(){
+  created() {
         PotholeService.listPotholes()
         .then((response) => {
             this.$store.state.potholes = response.data;
