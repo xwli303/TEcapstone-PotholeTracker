@@ -34,8 +34,8 @@ public class PotholeController {
 		return potholeServices.getFilteredListOfPotholes(orderBy);
 	}
 	
-	@RequestMapping(path="/report-pothole", method = RequestMethod.POST)
-	public void reportPothole( @RequestBody Pothole newPothole) {
+	@RequestMapping(path = "/report-pothole", method = RequestMethod.POST)
+	public void reportPothole(@RequestBody Pothole newPothole) {
 		potholeServices.reportPothole(newPothole);
 	}
 
@@ -45,7 +45,7 @@ public class PotholeController {
     }
 	
 	@RequestMapping(path = "/all-potholes/update-pothole/{id}", method = RequestMethod.PUT)
-    public void updatePotholeById( @PathVariable long id, @RequestBody Pothole pothole) {
+    public void updatePotholeById(@PathVariable long id, @RequestBody Pothole pothole) {
        potholeServices.updatePotholeById(id, pothole);
     }
 	

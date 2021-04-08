@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,7 +14,7 @@ import com.techelevator.model.Pothole;
 public class JdbcPotholeDAO implements PotholeDAO {
 	
 	private JdbcTemplate jdbcTemplate;
-	public JdbcPotholeDAO(JdbcTemplate jdbcTemplate  ) {
+	public JdbcPotholeDAO(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
@@ -51,7 +52,6 @@ public class JdbcPotholeDAO implements PotholeDAO {
 
 	@Override
 	public void reportPothole(Pothole newPothole) {
-		
 		String sqlReportPothole = "INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) " + ""
 				+ "VALUES ( ?, ?, ?, ?, ?, ? )";
 		jdbcTemplate.update(sqlReportPothole, newPothole.getLatitude(), newPothole.getLongitude(), newPothole.getSeverity(), 
@@ -76,9 +76,9 @@ public class JdbcPotholeDAO implements PotholeDAO {
 	@Override
 	public void updatePotholeById(long id, Pothole pothole) {
 		String sqlUpdatePothole = "UPDATE potholes " + 
-				"SET status_id = ?, severity_id = ? " + 
+				"SET status_id = ?, severity_id = ?, date_inspected = ?, date_repaired = ?" + 
 				"WHERE pothole_id = ? ";
-		jdbcTemplate.update(sqlUpdatePothole, pothole.getStatusCode(), pothole.getSeverity(), id);
+		jdbcTemplate.update(sqlUpdatePothole, pothole.getStatusCode(), pothole.getSeverity(), pothole.getDateInspected(), pothole.getDateRepaired(), id);
 
 	}
 
@@ -95,8 +95,12 @@ public class JdbcPotholeDAO implements PotholeDAO {
 		pothole.setLongitude(row.getDouble("longitude"));
 		pothole.setSeverity(row.getInt("severity_id"));
 		pothole.setStatusCode(row.getInt("status_id"));
-		//pothole.setDateInspected(row.getDate("date_inspected").toLocalDate());
-		//pothole.setDateRepaired(row.getDate("date_repaired").toLocalDate());
+		if(row.getDate("date_inspected") != null) {
+			pothole.setDateInspected(row.getDate("date_inspected").toLocalDate());
+		}
+		if(row.getDate("date_repaired") != null) {
+			pothole.setDateRepaired(row.getDate("date_repaired").toLocalDate());
+		}
 		pothole.setDateReported(row.getDate("date_reported").toLocalDate());
 		pothole.setUser_id(row.getInt("user_id"));
 		return pothole;
