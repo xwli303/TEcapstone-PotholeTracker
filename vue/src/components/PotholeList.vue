@@ -9,6 +9,7 @@
 </template>
     
 <script>
+import PotholeService from '../services/PotholeService';
 
 export default {
     name: "pothole-list",
@@ -16,6 +17,12 @@ export default {
         return{
             potholes:[]
         };
+    },
+
+    created(){
+        PotholeService.listPotholes().then((response) => {
+            this.potholes = response.data;
+        })
     }
 
    
@@ -23,5 +30,5 @@ export default {
 </script>
 
 <style>
-
+  
 </style>

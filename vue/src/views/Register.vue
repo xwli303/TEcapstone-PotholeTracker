@@ -97,7 +97,7 @@ export default {
 
 <style>
 #register{
-    background-image: url(https://cdn10.phillymag.com/wp-content/uploads/sites/3/2020/03/philadelphia-coronavirus-shutdown-photos.jpg);
+    background-image: url('~@/assets/philadelphia_skyline.jpg');
     background-size: 100%;
     width: 100%;
     height: 100%;

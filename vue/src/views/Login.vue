@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Welcome to the Philadelphia Pothole Tracker</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -84,11 +84,12 @@ export default {
 
 <style>
   #login{
-    background-image: url(https://cdn10.phillymag.com/wp-content/uploads/sites/3/2020/03/philadelphia-coronavirus-shutdown-photos.jpg);
+    background: url('~@/assets/philadelphia_skyline.jpg');
     background-size: 100%;
     width: 100%;
     height: 100%;
     position: fixed;
+    
   }
   .form-signin{
     background-color: rgba(194, 190, 190, 0.808);
