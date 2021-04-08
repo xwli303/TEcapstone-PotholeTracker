@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="map" ref="map"></div>
+        <div v-show="!isLoading" id="map" ref="map"></div>
     </div>
 </template>
 
@@ -9,7 +9,8 @@ import { Loader } from "@googlemaps/js-api-loader";
 export default {
     data() {
         return {
-            map: null
+            map: null,
+            // isLoading: true
         }
     },
     name: "PotholeMap",
@@ -33,6 +34,7 @@ export default {
                 });
                 marker.setMap(this.map);
             }
+            // this.isLoading = false;
         })
     }
 }
