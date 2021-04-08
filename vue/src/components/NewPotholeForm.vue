@@ -2,10 +2,10 @@
   <div class="report-pothole">
       <form v-on:submit.prevent="submitForm" class="pothole-form">
           <label for="latitude"> Latitude </label>
-          <input type="text"/>
+          <input type="text" v-model="pothole.latitude"/>
           <br>
           <label for="longitude">Longitude</label>
-          <input type="text"/>
+          <input type="text" v-model="pothole.longitude"/>
           <button class="btn-submit">Report</button>
       </form>
 
@@ -18,20 +18,21 @@ export default {
     name:"pothole-form",
     data(){
         return {
-            latitude:39.950,
-            longitude: -75.150
+            pothole:{
+                user_id: 1,
+                latitude: 0,
+                longitude: 0,
+                severity: 1,
+                statusCode: 1,
+                dateReported: '2021-04-07'
+            }
         }
     },
 
     methods:{
         submitForm(){
-            const newPothole = {
-                latitude: 39.950,
-                longitude: -75.150
-            };
-
             PotholeService
-                .reportPothole(newPothole)
+                .reportPothole(this.pothole)
                 .then(response => {
                     if(response.status === 201) {
                         this.$router.push('/report-pothole');
