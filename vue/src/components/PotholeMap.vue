@@ -1,12 +1,20 @@
 <template>
     <div>
-        <div v-show="!isLoading" id="map" ref="map"></div>
+        <div id="map" ref="map">
+            <map-marker v-for="pothole in $store.state.potholes" 
+                v-bind:key="pothole.id"
+                v-bind:lat="pothole.latitude" 
+                v-bind:lng="pothole.longitude">
+            </map-marker>
+        </div>
     </div>
 </template>
 
 <script>
 import { Loader } from "@googlemaps/js-api-loader";
+import MapMarker from './MapMarker.vue';
 export default {
+  components: { MapMarker },
     data() {
         return {
             map: null,
@@ -24,18 +32,21 @@ export default {
                 center: { lat: 39.9528, lng: -75.1635 },
                 zoom: 12
             });
-            let lat;
-            let lng;
-            for (let i = 0; i < this.$store.state.potholes.length; i++) {
-                lat = this.$store.state.potholes[i].latitude;
-                lng = this.$store.state.potholes[i].longitude;
-                const marker = new window.google.maps.Marker({
-                    position: { lat, lng }
-                });
-                marker.setMap(this.map);
-            }
-            // this.isLoading = false;
         })
+    },
+    methods: { 
+        // Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/src/App.vue lines 34-41
+        getMap(callback) {
+            let vm = this;
+            function checkForMap() {
+                if (vm.map) {
+                    callback(vm.map);
+                } else {
+                    setTimeout(checkForMap, 200);
+                }
+            }
+            checkForMap();
+        }
     }
 }
 </script>

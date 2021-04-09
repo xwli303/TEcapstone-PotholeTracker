@@ -2,17 +2,29 @@
     <div class="side-container">
         <div class="topline">HOME</div>
         <div class="add-pothole">
-            <new-pothole-form/>
+            <user-menu v-show=" userRole == 'ROLE_USER' " />
+            <guest-menu v-show=" userRole == 'ROLE_GUEST' " />
+            <employee-menu v-show=" userRole == 'ROLE_EMPLOYEE' " />
         </div>
     </div>
 </template>
 
 <script>
-import NewPotholeForm from './NewPotholeForm.vue'
+import UserMenu from '@/components/MenuComponents/UserMenu';
+import GuestMenu from '@/components/MenuComponents/GuestMenu';
+import EmployeeMenu from '@/components/MenuComponents/EmployeeMenu';
+
 export default {
     name: "SideMenu",
     components: {
-        NewPotholeForm
+        UserMenu,
+        GuestMenu,
+        EmployeeMenu
+    },
+    data () {
+        return {
+            userRole: this.$store.state.user.authorities[0].name
+        }
     }
 }
 </script>

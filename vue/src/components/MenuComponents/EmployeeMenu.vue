@@ -1,10 +1,7 @@
 <template>
-  <ul>
-      <li>Review Reported Potholes</li>
-      <li>Schedule Repair</li>
-      <li>Rank Pothole Severity</li>
-      <li>Delete a Pothole</li>
-  </ul>
+  <div>
+    
+  </div>
 </template>
 
 <script>

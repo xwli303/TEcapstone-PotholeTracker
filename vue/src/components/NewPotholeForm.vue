@@ -1,9 +1,14 @@
 <template>
   <div class="report-pothole">
-      <form v-on:submit.prevent="submitForm" class="pothole-form">
+      <form v-show="!dbUpdated" v-on:submit.prevent="submitForm" class="pothole-form">
           <label for="address"> Address </label>
           <input type="text" v-model="address" />
-          <button class="btn-submit">Report</button>
+          <button v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Report</button>
+      </form>
+      <form v-show="dbUpdated" v-on:submit.prevent="updateStore" id="confirmation-form">
+          Is this the right address?
+          {{ address }}
+          <button v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Yes</button>
       </form>
   </div>
 </template>
@@ -15,23 +20,22 @@ export default {
     data(){
         return {
             pothole:{
-                user_id: 1,
+                user_id: this.$store.state.user.id,
                 latitude: 21,
                 longitude: 42,
                 severity: 1,
                 statusCode: 1,
                 dateReported: '2021-04-07'
             },
-            address: null
+            address: null,
+            dbUpdated: false
         }
     },
-
     methods:{
         submitForm() {
             let addressLat = null;
             let addressLng = null;
             let tempPothole = this.pothole;
-            let tempRouter = this.$router;
             let geocoder = new window.google.maps.Geocoder();
             if ( this.address != null ) {
                 geocoder.geocode( {'address': this.address}, 
@@ -46,22 +50,23 @@ export default {
                                 PotholeService
                                     .reportPothole(tempPothole)
                                     .then(response => {
-                                        if(response.status === 201) {
-                                            tempRouter.push('/report-pothole');
+                                        if(response.status === 201 || response.status === 200) {
+                                            console.log(response.status);
                                         }
-                                        })
-                                        .catch(error => {
-                                            this.handleErrorResponse(error); 
-                                        });
-
+                                    })
+                                    .catch(error => {
+                                        console.log(error); 
+                                    });
                             }
                         }
                     }
                 );
             }
+        },
+        updateStore() {
+            this.$store.commit('ADD_POTHOLE', this.pothole);
         }
     }
-
 }
 </script>
 

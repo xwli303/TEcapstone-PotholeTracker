@@ -38,6 +38,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    ADD_POTHOLE(state, pothole) {
+      state.potholes.push(pothole);
     }
   }
 })

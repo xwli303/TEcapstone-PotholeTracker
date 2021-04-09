@@ -1,12 +1,16 @@
 <template>
-  <ul>
-      <li></li>
-  </ul>
+  <div>
+    <new-pothole-form />
+  </div>
 </template>
 
 <script>
+import NewPotholeForm from '@/components/NewPotholeForm';
 export default {
-  name: 'user-menu'
+  name: 'user-menu',
+  components: {
+    NewPotholeForm
+  }
 
 }
 </script>
