@@ -31,5 +31,7 @@ export default {
 </script>
 
 <style>
-  
+  .list{
+      font-family: Helvetica, sans-serif;
+  }
 </style>
