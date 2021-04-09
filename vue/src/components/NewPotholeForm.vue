@@ -1,15 +1,13 @@
 <template>
   <div class="report-pothole">
       <form v-show="!dbUpdated" v-on:submit.prevent="submitForm" class="pothole-form">
-          <h2>Report a Pothole</h2>
-          <label for="address" > Address: </label>
-          <br>
-          <input id="inputfield" type="text" v-model="address" />
+          <label for="address"> Address </label>
+          <input type="text" v-model="userAddress" />
           <button v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Report</button>
       </form>
-      <form v-show="dbUpdated" v-on:submit.prevent="updateStore" id="confirmation-form">
+      <form v-show="dbUpdated" v-on:submit.prevent id="confirmation-form">
           Is this the right address?
-          {{ address }}
+          {{ userAddress }}
           <button v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Yes</button>
       </form>
   </div>
@@ -19,17 +17,18 @@
 import PotholeService from "../services/PotholeService";
 export default {
     name:"pothole-form",
-    data(){
+    data() {
         return {
             pothole:{
                 user_id: this.$store.state.user.id,
-                latitude: 21,
-                longitude: 42,
+                address: null,
+                latitude: null,
+                longitude: null,
                 severity: 1,
                 statusCode: 1,
                 dateReported: '2021-04-07'
             },
-            address: null,
+            userAddress: null,
             dbUpdated: false
         }
     },
@@ -38,22 +37,29 @@ export default {
             let addressLat = null;
             let addressLng = null;
             let tempPothole = this.pothole;
+            let addToStore = this.updateStore;
             let geocoder = new window.google.maps.Geocoder();
-            if ( this.address != null ) {
-                geocoder.geocode( {'address': this.address}, 
+            if ( this.userAddress != null ) {
+                geocoder.geocode( {'address': this.userAddress}, 
                     function(results, status) {
                         if (status == 'OK') {
                             if (results[0]) {
+
+                                const formattedAddress = results[0].formatted_address;
+                                tempPothole.address = formattedAddress;
+
                                 let potholeLatLng = results[0].geometry.location;
                                 addressLat = potholeLatLng.lat();
                                 addressLng = potholeLatLng.lng();
+
                                 tempPothole.latitude = addressLat;
                                 tempPothole.longitude = addressLng;
+
                                 PotholeService
                                     .reportPothole(tempPothole)
                                     .then(response => {
                                         if(response.status === 201 || response.status === 200) {
-                                            console.log(response.status);
+                                            addToStore();
                                         }
                                     })
                                     .catch(error => {

@@ -52,9 +52,9 @@ public class JdbcPotholeDAO implements PotholeDAO {
 
 	@Override
 	public void reportPothole(Pothole newPothole) {
-		String sqlReportPothole = "INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) " + ""
-				+ "VALUES ( ?, ?, ?, ?, ?, ? )";
-		jdbcTemplate.update(sqlReportPothole, newPothole.getLatitude(), newPothole.getLongitude(), newPothole.getSeverity(), 
+		String sqlReportPothole = "INSERT INTO potholes ( address, latitude, longitude, severity_id, status_id, date_reported, user_id ) " + ""
+				+ "VALUES ( ?, ?, ?, ?, ?, ?, ? )";
+		jdbcTemplate.update(sqlReportPothole, newPothole.getAddress(), newPothole.getLatitude(), newPothole.getLongitude(), newPothole.getSeverity(), 
 				1, newPothole.getDateReported(), newPothole.getUser_id());
 		
 	}
@@ -76,9 +76,9 @@ public class JdbcPotholeDAO implements PotholeDAO {
 	@Override
 	public void updatePotholeById(long id, Pothole pothole) {
 		String sqlUpdatePothole = "UPDATE potholes " + 
-				"SET status_id = ?, severity_id = ?, date_inspected = ?, date_repaired = ?" + 
+				"SET address = ?, status_id = ?, severity_id = ?, date_inspected = ?, date_repaired = ?" + 
 				"WHERE pothole_id = ? ";
-		jdbcTemplate.update(sqlUpdatePothole, pothole.getStatusCode(), pothole.getSeverity(), pothole.getDateInspected(), pothole.getDateRepaired(), id);
+		jdbcTemplate.update(sqlUpdatePothole, pothole.getAddress(), pothole.getStatusCode(), pothole.getSeverity(), pothole.getDateInspected(), pothole.getDateRepaired(), id);
 
 	}
 
@@ -91,6 +91,7 @@ public class JdbcPotholeDAO implements PotholeDAO {
 	private Pothole mapRowToPothole(SqlRowSet row) {
 		Pothole pothole = new Pothole();
 		pothole.setId(row.getLong("pothole_id"));
+		pothole.setAddress(row.getString("address"));
 		pothole.setLatitude(row.getDouble("latitude"));
 		pothole.setLongitude(row.getDouble("longitude"));
 		pothole.setSeverity(row.getInt("severity_id"));

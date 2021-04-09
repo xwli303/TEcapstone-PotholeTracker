@@ -51,6 +51,7 @@ INSERT INTO status ( status_id, status_description ) VALUES ( 3, 'Repaired' );
      
 CREATE TABLE potholes (
         pothole_id serial NOT NULL,
+        address varchar(200),
         latitude float,
         longitude float,
         severity_id int,
@@ -62,11 +63,12 @@ CREATE TABLE potholes (
         CONSTRAINT PK_potholes PRIMARY KEY (pothole_id)
 );
 
+ /*
 INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.9056, -75.1742, 3, 1, '2021-04-06',2 );
 INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.9470, -75.1444, 3, 1, '2021-04-06', 2 );
 INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.95221, -75.16851, 2, 1, '2021-04-06', 2 );
 INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.9613, -75.1465, 3, 1, '2021-04-06', 2 );
- 
+*/
         
 ALTER TABLE potholes ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 ALTER TABLE potholes ADD FOREIGN KEY (severity_id) REFERENCES severity(severity_id);

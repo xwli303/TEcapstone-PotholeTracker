@@ -6,6 +6,7 @@ public class Pothole {
 	private long id;
 	private int statusCode;
 	private int severity;
+	private String address;
 	private double longitude;
 	private double latitude;
 	private LocalDate dateReported;
@@ -68,6 +69,12 @@ public class Pothole {
 	}
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	

@@ -1,9 +1,9 @@
 <template>
     <div class="side-container">
         <div class="add-pothole">
-            <user-menu v-show=" userRole == 'ROLE_USER' " />
-            <guest-menu v-show=" userRole == 'ROLE_GUEST' " />
-            <employee-menu v-show=" userRole == 'ROLE_EMPLOYEE' " />
+            <user-menu id="user-menu" v-show=" userRole == 'ROLE_USER' " />
+            <guest-menu id="guest-menu" v-show=" userRole == 'ROLE_GUEST' " />
+            <employee-menu id="emp-menu" v-show=" userRole == 'ROLE_EMPLOYEE' " />
         </div>
     </div>
 </template>
