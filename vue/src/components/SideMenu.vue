@@ -1,6 +1,5 @@
 <template>
     <div class="side-container">
-        <div class="topline">HOME</div>
         <div class="add-pothole">
             <user-menu v-show=" userRole == 'ROLE_USER' " />
             <guest-menu v-show=" userRole == 'ROLE_GUEST' " />
@@ -33,6 +32,7 @@ export default {
 <style>
 .side-container {
     display: grid;
+    padding-left: 6px;
     grid-template-areas: 
         "topline"
         "add-pothole"

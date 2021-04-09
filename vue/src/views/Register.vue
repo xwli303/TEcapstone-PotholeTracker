@@ -40,7 +40,7 @@
         Create Account
       </button>
       <br>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <router-link id = "link" :to="{ name: 'login' }">Have an account?</router-link>
     </form>
   </div>
 </template>
@@ -98,10 +98,11 @@ export default {
 <style>
 #register{
     background-image: url('~@/assets/philadelphia_skyline.jpg');
-    background-size: 100%;
+    background-size: cover;
     width: 100%;
     height: 100%;
     position: fixed;
+    background-repeat: no-repeat;
   }
   .form-register{
     background-color: rgba(194, 190, 190, 0.808);
@@ -111,7 +112,7 @@ export default {
     transform: translate(-50%, -50%);
     width: 400px;
     border-radius: 15px;
-    padding: 30px 0px 50px 80px;
+    padding: 30px 0px 50px 145px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
   }
 
@@ -135,6 +136,15 @@ export default {
     border:none;
     margin:10px 0px 10px 0px;
     
+  }
+
+  #link{
+    color:black;
+    text-decoration: none;
+  }
+  #link:hover {
+    color: grey;
+    text-decoration: none;
   }
 
 </style>

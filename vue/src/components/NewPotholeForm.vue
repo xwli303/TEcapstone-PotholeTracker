@@ -1,8 +1,10 @@
 <template>
   <div class="report-pothole">
       <form v-show="!dbUpdated" v-on:submit.prevent="submitForm" class="pothole-form">
-          <label for="address"> Address </label>
-          <input type="text" v-model="address" />
+          <h2>Report a Pothole</h2>
+          <label for="address" > Address: </label>
+          <br>
+          <input id="inputfield" type="text" v-model="address" />
           <button v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Report</button>
       </form>
       <form v-show="dbUpdated" v-on:submit.prevent="updateStore" id="confirmation-form">
@@ -71,5 +73,18 @@ export default {
 </script>
 
 <style>
+#inputfield{
+    border: solid black 3px;
+    width: 86%;
 
+}
+.report-pothole{
+    font-family: Helvetica, sans-serif;
+}
+button{
+    width: 94%;
+}
+h2{
+    font-size: 20px;
+}
 </style>

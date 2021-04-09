@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Welcome to the Philadelphia Pothole Tracker</h1>
+      <h1 class="h3 mb-3 font-weight-normal philly">PHILLY <br/> POTHOLE <br/> TRACKER</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -39,7 +39,7 @@
       <br>
       <button>Guest Account </button>
       <br>
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <router-link id = "link" :to="{ name: 'register' }">Need an account?</router-link>
     </form>
   </div>
 </template>
@@ -85,11 +85,17 @@ export default {
 <style>
   #login{
     background: url('~@/assets/philadelphia_skyline.jpg');
-    background-size: 100%;
+    background-size: cover;
     width: 100%;
     height: 100%;
     position: fixed;
+    background-repeat: no-repeat;
     
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
+  .philly{
+    font-family: "Kanit", Helvetica, sans-serif;
+    font-size:50px;
   }
   .form-signin{
     background-color: rgba(194, 190, 190, 0.808);
@@ -99,8 +105,8 @@ export default {
     transform: translate(-50%, -50%);
     width: 400px;
     border-radius: 15px;
-    padding: 30px 0px 50px 80px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    padding: 30px 0px 50px 145px;
+    font-family: Helvetica, sans-serif
   }
 
   label{
@@ -124,5 +130,14 @@ export default {
     margin:10px 0px 10px 0px;
     
   }
+
+  #link{
+    color:black;
+    text-decoration: none;
+  }
+  #link:hover {
+color: grey;
+text-decoration: none;
+}
 
 </style>
