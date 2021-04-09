@@ -2,7 +2,7 @@
   <div id="app">
     <div id="flexbox" v-if="$store.state.token != ''">
       <div id="icon">
-        <h2>our image</h2>
+        <img class = "image" src="@/assets/blacklogo.jpg" alt = "logo">
         </div>
       <div id="nav">
       <router-link class="top"  v-bind:to="{ name: 'home' }">Home | </router-link>
@@ -19,22 +19,18 @@
   #flexbox{
     display:flex;
     justify-content: space-between;
-    padding-right: 30px;
+    
     margin: 0 auto;
     padding-inline-start: 10px;
     z-index: 1;
     height: 100px;
     background-color: white;
-
+    align-items: center;
   }
-/* unvisited link */
-#nav {
-
-}
 
 .top {
 font-family: Helvetica, sans-serif;
-font-size: 25px;
+font-size: 20px;
 font-weight: bold;
 color:black;
 text-decoration: none;
@@ -42,6 +38,10 @@ vertical-align: middle;
 margin-top: 50px;
 }
 
+.image{
+  height: 100px;
+  width: auto;
+}
 /* mouse over link */
 .top:hover {
 color: grey;
