@@ -35,9 +35,9 @@
         required
       />
       <br>
-      <button type="submit">Sign in</button>
+      <button id="button" type="submit">Sign in</button>
       <br>
-      <button>Guest Account </button>
+      <button id="button">Guest Account </button>
       <br>
       <router-link id = "link" :to="{ name: 'register' }">Need an account?</router-link>
     </form>
@@ -123,12 +123,15 @@ export default {
   }
 
   button{
-    width:250px;
+    width: 100px;
     height:30px;
     border-radius: 3px;
     border:none;
     margin:10px 0px 10px 0px;
     
+  }
+  #button{
+    width: 63%;
   }
 
   #link{
@@ -136,8 +139,8 @@ export default {
     text-decoration: none;
   }
   #link:hover {
-color: grey;
-text-decoration: none;
-}
+    color: grey;
+    text-decoration: none;
+  }
 
 </style>

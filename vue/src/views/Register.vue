@@ -36,7 +36,7 @@
         required
       />
       <br>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button id="button" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
       <br>
@@ -146,5 +146,7 @@ export default {
     color: grey;
     text-decoration: none;
   }
-
+#button{
+    width: 63%;
+  }
 </style>
