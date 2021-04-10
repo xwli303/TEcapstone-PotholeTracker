@@ -56,6 +56,7 @@ export default {
 
                                 tempPothole.latitude = addressLat;
                                 tempPothole.longitude = addressLng;
+                                
 
                                 PotholeService
                                     .reportPothole(tempPothole)

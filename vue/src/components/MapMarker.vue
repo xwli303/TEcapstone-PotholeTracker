@@ -13,16 +13,38 @@ Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/sr
 		}),
 		mounted() {
 			this.$parent.getMap(map => {
-				let label={ text: `${this.dent.id}`, color:"white" }  //dla 4/10
+				
+				
+			//	let infoString = "<div>" + "<h2>The is the infoDi</h2>" +"</div>"
+				let iconString = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+				if(this.dent.severity > 2){
+				iconString = "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
+				}
+				if(this.dent.severity > 4){
+				iconString = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"	
+				}
+				
+
+			//	let label={ text: `${this.dent.id}`, color:"white" }  //dla 4/10
+				
+				let icon = {url: iconString} 
+				let statusMessage = "NOT Inspected"
+				if(this.dent.statusCode > 1){
+					statusMessage = "Inspected on: " + `${this.dent.dateInspected}`
+				}
+				let message = "Reported on: " + `${this.dent.dateReported}` + "\n" +statusMessage
+				
 				this.marker = new window.google.maps.Marker({
 					
 					position: { lat: this.lat, lng: this.lng },
-					label: label,    // dla 4/10
-					map: map
+				//	label: label,    // dla 4/10
+					map: map,
+					icon: icon,
+					title: message
 				})
 				this.marker.setDraggable(true);   // dla 4/10
 				this.marker.addListener("click", () => {
-					let label={ text: "PHL", color:"white" }
+					let label={ text: "PHL", color:"black", fontSize:"14px", fontweight:"bold"}
 					this.marker.setLabel(label);
 					
 
