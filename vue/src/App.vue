@@ -7,7 +7,7 @@
       <div id="nav">
       <router-link class="top"  v-bind:to="{ name: 'home' }">Home | </router-link>
       <router-link class="top" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> Logout |</router-link>
-      <router-link class="top" v-bind:to="{ name: 'pothole-view'}"> List </router-link>
+      <router-link class="top" v-bind:to="{ name: 'pothole-view'}" v-if="$store.state.user.authorities[0].name === 'ROLE_EMPLOYEE'"> List </router-link>
       </div>
       
     </div>
