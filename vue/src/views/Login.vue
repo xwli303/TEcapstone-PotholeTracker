@@ -37,7 +37,7 @@
       <br>
       <button id="button" type="submit">Sign in</button>
       <br>
-      <button id="button">Guest Account </button>
+      <button id="button" @click="guestLogin">Guest Account</button>
       <br>
       <router-link id = "link" :to="{ name: 'register' }">Need an account?</router-link>
     </form>
@@ -77,6 +77,11 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },
+    guestLogin() {
+      this.user.username = "guest";
+      this.user.password = "guest";
+      this.login();
     }
   }
 };
