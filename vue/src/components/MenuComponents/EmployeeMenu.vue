@@ -1,5 +1,24 @@
 <template>
   <div>
+    <form class="dropdown">
+      <label for="status"> Status </label>
+      <select class="dropdown-content">
+        <option value="Reported">Reported</option>
+        <option value="Inspected">Inspected</option>
+        <option value="Repaired">Repaired</option>
+      </select>
+    </form>
+   <br>
+    <form class="dropdown">
+      <label for="severity">Severity</label>
+      <select class="dropdown-content">
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+      </select>
+    </form>
     <div id="main-list">
       <ul>
         <button v-for="pothole in $store.state.potholes"
@@ -58,5 +77,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>

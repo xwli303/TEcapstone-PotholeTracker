@@ -38,7 +38,7 @@ export default {
                 JobService
                 .deleteJob(this.job.id)
                 .then(response => {
-                    if(status == 'OK'){
+                    if(response.status == 'OK'){
                         alert("Pothole successfully deleted");
                         this.router.push('/job-list')
                     }
