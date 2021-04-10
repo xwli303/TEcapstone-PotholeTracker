@@ -103,5 +103,8 @@ export default {
 div{
   font-family: Helvetica, sans-serif;
 }
+.status-form{
+  padding-top: 50px;
+}
 
 </style>
