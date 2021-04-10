@@ -32,7 +32,7 @@ export default {
 <style>
 .side-container {
     display: grid;
-    padding-left: 6px;
+    padding-left: 10px;
     grid-template-areas: 
         "topline"
         "add-pothole"

@@ -20,7 +20,8 @@
   #flexbox{
     display:flex;
     justify-content: space-between;
-    
+    padding-top: 10px;
+    padding-right: 10px;
     margin: 0 auto;
     padding-inline-start: 10px;
     z-index: 1;

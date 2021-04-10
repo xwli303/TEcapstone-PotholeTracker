@@ -32,6 +32,7 @@ export default {
 
 <style>
   .list{
+      padding-top: 20px;;
       font-family: Helvetica, sans-serif;
   }
 </style>

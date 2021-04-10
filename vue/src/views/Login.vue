@@ -88,6 +88,10 @@ export default {
 </script>
 
 <style>
+  body{
+    margin: 0;
+    padding: 0;
+  }
   #login{
     background: url('~@/assets/philadelphia_skyline.jpg');
     background-size: cover;
