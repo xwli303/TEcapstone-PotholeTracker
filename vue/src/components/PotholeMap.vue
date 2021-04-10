@@ -3,6 +3,7 @@
         <div id="map" ref="map">
             <map-marker v-for="pothole in $store.state.potholes" 
                 v-bind:key="pothole.id"
+                v-bind:dent="pothole"
                 v-bind:lat="pothole.latitude" 
                 v-bind:lng="pothole.longitude">
             </map-marker>
