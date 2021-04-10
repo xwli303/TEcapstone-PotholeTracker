@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="dropdown">
+    <form class="status-form">
       <label for="status"> Status </label>
       <select class="dropdown-content">
         <option value="Reported">Reported</option>
@@ -8,8 +8,9 @@
         <option value="Repaired">Repaired</option>
       </select>
     </form>
+    
    <br>
-    <form class="dropdown">
+    <form class="severrity-form">
       <label for="severity">Severity</label>
       <select class="dropdown-content">
         <option value="5">5</option>
