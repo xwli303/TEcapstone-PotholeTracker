@@ -3,11 +3,12 @@
     <div id="flexbox" v-if="$store.state.token != ''">
       <div id="icon">
         <img class = "image" src="@/assets/blacklogo.jpg" alt = "logo">
+        <h1 id="title">PHILLY POTHOLE TRACKER</h1>
         </div>
       <div id="nav">
       <router-link class="top"  v-bind:to="{ name: 'home' }">Home | </router-link>
-      <router-link class="top" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> Logout |</router-link>
-      <router-link class="top" v-bind:to="{ name: 'pothole-view'}" v-if="$store.state.user.authorities[0].name === 'ROLE_EMPLOYEE'"> List </router-link>
+      <router-link class="top" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> Logout</router-link>
+      <router-link class="top" v-bind:to="{ name: 'pothole-view'}" v-if="$store.state.user.authorities[0].name === 'ROLE_EMPLOYEE'"> | List </router-link>
       </div>
       
     </div>
@@ -38,6 +39,11 @@ vertical-align: middle;
 margin-top: 50px;
 }
 
+#icon{
+  display: flex;
+  align-items: center;
+}
+
 .image{
   height: 100px;
   width: auto;
@@ -46,6 +52,12 @@ margin-top: 50px;
 .top:hover {
 color: grey;
 text-decoration: none;
+}
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
+#title{
+  font-family: "Kanit", Helvetica, sans-serif;
+  font-size:30px;
+  padding-left: 10px;
 }
 
 </style>

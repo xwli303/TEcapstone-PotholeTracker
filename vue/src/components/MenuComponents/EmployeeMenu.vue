@@ -11,7 +11,7 @@
     
    <br>
     <form class="severity-form">
-      <label for="severity">Severity</label>
+      <label for="severity">Severity </label>
       <select id="severity" >
         <option v-for="option in severityOptions" v-bind:value="option.value" :key="option.value">
         {{option.text}}
@@ -100,6 +100,8 @@ export default {
 </script>
 
 <style>
-
+div{
+  font-family: Helvetica, sans-serif;
+}
 
 </style>

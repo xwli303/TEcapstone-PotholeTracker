@@ -1,14 +1,16 @@
 <template>
   <div class="report-pothole">
+     <p id="welcome">Welcome! <br> Thank you for your interest in improving our city. <br>• To see currently reported potholes, please see the map. <br>• To report a pothole, please fill out the address in the field below. <br> Our team will address the pothole as soon as we can. </p>
+      <p><strong>Report a Pothole:</strong></p>
       <form v-show="!dbUpdated" v-on:submit.prevent="submitForm" class="pothole-form">
-          <label for="address"> Address </label>
-          <input type="text" v-model="userAddress" />
+          <label for="address"> Address: </label>
+          <input id="inputfield" type="text" v-model="userAddress" />
           <button v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Report</button>
       </form>
       <form v-show="dbUpdated" v-on:submit.prevent id="confirmation-form">
           Is this the right address?
           {{ userAddress }}
-          <button v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Yes</button>
+          <button id="button" v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Yes</button>
       </form>
   </div>
 </template>
@@ -86,11 +88,17 @@ export default {
 }
 .report-pothole{
     font-family: Helvetica, sans-serif;
+    padding-top: 40px;
 }
-button{
+#button{
     width: 94%;
 }
-h2{
-    font-size: 20px;
+#welcome{
+    width: 94%
+}
+
+#inputfield{
+    border: solid black 3px;
+    width: 86%;
 }
 </style>
