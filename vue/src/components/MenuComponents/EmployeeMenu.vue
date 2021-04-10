@@ -19,8 +19,8 @@
       </select>
     </form>
     <div id="main-list">
-      <ul>
-        <button v-for="pothole in $store.state.potholes"
+      <ul id="employee-buttons">
+        <button id="employee-button" v-for="pothole in $store.state.potholes"
           v-bind:key="pothole.id">ID: {{ pothole.id }} | Address: {{ pothole.address }}</button>
       </ul>
     </div>
@@ -106,5 +106,11 @@ div{
 .status-form{
   padding-top: 50px;
 }
-
+#employee-buttons{
+  padding-left: 0px;
+  width: 93%;
+}
+#employee-button{
+  width: 98%;
+}
 </style>
