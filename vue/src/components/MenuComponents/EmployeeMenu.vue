@@ -48,7 +48,6 @@ export default {
           statusCode: null,
           dateReported: '2021-04-07'
         },
-<<<<<<< Updated upstream
         StatusOptions: [
           { text: '', value: ''},
           { text: 'Reported', value: '1'},
@@ -96,8 +95,6 @@ export default {
             }
           })
           this.$store.commit('ADD_FILTERED_POTHOLES', potholesToReturn)
-=======
->>>>>>> Stashed changes
       }
     },
     created(){
@@ -107,7 +104,6 @@ export default {
 </script>
 
 <style>
-<<<<<<< Updated upstream
 div{
   font-family: Helvetica, sans-serif;
 }
@@ -121,7 +117,5 @@ div{
 #employee-button{
   width: 98%;
 }
-=======
->>>>>>> Stashed changes
 
 </style>
