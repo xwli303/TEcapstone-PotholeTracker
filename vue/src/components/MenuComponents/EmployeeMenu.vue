@@ -25,7 +25,7 @@
     </form>
     <div id="main-list">
       <ul id="employee-buttons">
-        <button id="employee-button" v-for="pothole in $store.state.potholes"
+        <button id="employee-button" v-for="pothole in $store.state.filteredPotholes"
           v-bind:key="pothole.id">ID: {{ pothole.id }} | Address: {{ pothole.address }}</button>
       </ul>
     </div>

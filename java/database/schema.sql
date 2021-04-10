@@ -23,7 +23,7 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
         );
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$10$szgCbRXn5E2cDH3Z5QhITO.XxQtiM22cc3iOyuJE9vRSR3.AbOvVK','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('guest','$2a$10$1xR3SoLx.1p4FSn7Jq0kuuSOaFwkde9g4a8RdFkN94fOjGWJer5fa','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('guest','$2a$10$1xR3SoLx.1p4FSn7Jq0kuuSOaFwkde9g4a8RdFkN94fOjGWJer5fa','ROLE_GUEST');
 INSERT INTO users (username,password_hash,role) VALUES ('employee', '$2a$10$5lYDl/2.ahiJuZZQesqFauNA3CURYX6/IUvc/soEygLnbumrCDKjq', 'ROLE_EMPLOYEE');
 
 CREATE TABLE severity (
@@ -59,12 +59,12 @@ CREATE TABLE potholes (
         user_id int,
         CONSTRAINT PK_potholes PRIMARY KEY (pothole_id)
         );
- /*
+
 INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.9056, -75.1742, 3, 1, '2021-04-06',2 );
 INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.9470, -75.1444, 3, 1, '2021-04-06', 2 );
 INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.95221, -75.16851, 2, 1, '2021-04-06', 2 );
 INSERT INTO potholes ( latitude, longitude, severity_id, status_id, date_reported, user_id ) VALUES ( 39.9613, -75.1465, 3, 1, '2021-04-06', 2 );
-*/      
+      
 ALTER TABLE potholes ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 ALTER TABLE potholes ADD FOREIGN KEY (severity_id) REFERENCES severity(severity_id);
 ALTER TABLE potholes ADD FOREIGN KEY (status_id) REFERENCES status(status_id);
