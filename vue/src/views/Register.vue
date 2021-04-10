@@ -106,13 +106,14 @@ export default {
   }
   .form-register{
     background-color: rgba(194, 190, 190, 0.808);
-    position:fixed;
+    position: left;
     top:50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
+    width: 300px;
     border-radius: 15px;
-    padding: 30px 0px 50px 145px;
+    padding: 30px 0px 50px 20px;
+    margin-left: 30px;
+    margin-top: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
   }
 
