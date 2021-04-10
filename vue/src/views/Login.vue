@@ -1,6 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
+      <img class = "login-image" src="@/assets/blacklogo.png" alt = "logo">
       <h1 class="h3 mb-3 font-weight-normal philly">PHILLY <br/> POTHOLE <br/> TRACKER</h1>
       <div
         class="alert alert-danger"
@@ -18,7 +19,6 @@
         type="text"
         id="username"
         class="form-control"
-        placeholder="Username"
         v-model="user.username"
         required
         autofocus
@@ -30,7 +30,6 @@
         type="password"
         id="password"
         class="form-control"
-        placeholder="Password"
         v-model="user.password"
         required
       />
@@ -101,21 +100,28 @@ export default {
     background-repeat: no-repeat;
     
   }
+  .text-center{
+    margin: 0 auto;
+    text-align: center;
+  }
   @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
   .philly{
     font-family: "Kanit", Helvetica, sans-serif;
-    font-size:50px;
+    font-size: 38px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .form-signin{
     background-color: rgba(194, 190, 190, 0.808);
-    position:fixed;
+    position: left;
     top:50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
+    width: 300px;
     border-radius: 15px;
-    padding: 30px 0px 50px 145px;
-    font-family: Helvetica, sans-serif
+    padding: 30px 0px 50px 20px;
+    margin-left: 30px;
+    margin-top: 30px;
+    font-family: Helvetica, sans-serif;
   }
 
   label{
@@ -142,6 +148,12 @@ export default {
   #button{
     width: 63%;
   }
+
+  .login-image{
+  height: 100px;
+  width: auto;
+  align-self: center;
+}
 
   #link{
     color:black;
