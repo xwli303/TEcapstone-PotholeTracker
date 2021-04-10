@@ -55,7 +55,8 @@ export default {
           { text: '2', value: '2'},
           { text: '1', value: '1'}
         ],
-        statusFilter:0
+        statusFilter:0,
+        severityFilter:0
       }
     },
     computed: {
