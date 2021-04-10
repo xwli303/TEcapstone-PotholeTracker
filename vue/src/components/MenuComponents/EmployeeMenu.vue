@@ -2,22 +2,20 @@
   <div>
     <form class="status-form">
       <label for="status"> Status </label>
-      <select class="dropdown-content">
-        <option value="Reported">Reported</option>
-        <option value="Inspected">Inspected</option>
-        <option value="Repaired">Repaired</option>
+      <select id="status" v-model="statusFilter">
+        <option v-for="option in StatusOptions" v-bind:value="option.value" :key="option.value">
+        {{option.text}}
+        </option>
       </select>
     </form>
     
    <br>
-    <form class="severrity-form">
+    <form class="severity-form">
       <label for="severity">Severity</label>
-      <select class="dropdown-content">
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
+      <select id="severity" >
+        <option v-for="option in severityOptions" v-bind:value="option.value" :key="option.value">
+        {{option.text}}
+        </option>
       </select>
     </form>
     <div id="main-list">
@@ -45,6 +43,29 @@ export default {
           statusCode: null,
           dateReported: '2021-04-07'
         },
+        StatusOptions: [
+          { text: 'Reported', value: '1'},
+          { text: 'Inspected', value: '2'},
+          { text: 'Repaired', value: '3'}
+        ],
+        severityOptions:[
+          {text: '5', value: '5'},
+          { text: '4', value: '4'},
+          { text: '3', value: '3'},
+          { text: '2', value: '2'},
+          { text: '1', value: '1'}
+        ],
+        statusFilter:0
+      }
+    },
+    computed: {
+      filteredPotholes(){
+        // const potholeFilter = this.$store.state.filter;
+        // const potholes = this.$store.state.potholes;
+
+        return this.$store.potholes.filter(pothole => {
+          return parseInt(this.statusFilter) === pothole.statusCode
+        })
       }
     }
     // mounted() {
