@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Filter Potholes</h1>
     <form class="status-form" v-on:submit.prevent>
       <label for="status"> Status </label>
       <select id="status" v-model="statusFilter">
