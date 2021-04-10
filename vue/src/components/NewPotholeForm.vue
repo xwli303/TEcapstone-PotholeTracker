@@ -5,12 +5,12 @@
       <form v-show="!dbUpdated" v-on:submit.prevent="submitForm" class="pothole-form">
           <label for="address"> Address: </label>
           <input id="inputfield" type="text" v-model="userAddress" />
-          <button v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Report</button>
+          <button id="buttonform" v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Report</button>
       </form>
       <form v-show="dbUpdated" v-on:submit.prevent id="confirmation-form">
           Is this the right address?
           {{ userAddress }}
-          <button id="button" v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Yes</button>
+          <button id="buttonform" v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Yes</button>
       </form>
   </div>
 </template>
@@ -90,8 +90,8 @@ export default {
     font-family: Helvetica, sans-serif;
     padding-top: 50px;
 }
-#button{
-    width: 94%;
+#buttonform{
+    width: 91%;
 }
 #welcome{
     width: 94%
