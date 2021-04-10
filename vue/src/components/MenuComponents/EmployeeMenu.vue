@@ -24,8 +24,8 @@
       <button id="filter" @click="filterPotholes" class="submit"> Filter </button>
     </form>
     <div id="main-list">
-      <ul id="employee-buttons">
-        <button id="employee-button" v-for="pothole in $store.state.potholes"
+      <ul>
+        <button v-for="pothole in $store.state.potholes"
           v-bind:key="pothole.id">ID: {{ pothole.id }} | Address: {{ pothole.address }}</button>
       </ul>
     </div>
@@ -48,6 +48,7 @@ export default {
           statusCode: null,
           dateReported: '2021-04-07'
         },
+<<<<<<< Updated upstream
         StatusOptions: [
           { text: '', value: ''},
           { text: 'Reported', value: '1'},
@@ -95,42 +96,18 @@ export default {
             }
           })
           this.$store.commit('ADD_FILTERED_POTHOLES', potholesToReturn)
+=======
+>>>>>>> Stashed changes
       }
     },
     created(){
       this.$store.commit("SET_FILTERED_POTHOLES");
     }
-    // mounted() {
-    //   let tempPotholesWithAddresses = this.potholesWithAddresses;
-    //   let geocoder = new window.google.maps.Geocoder();
-    //   this.$store.state.potholes.forEach((oldPothole) => {
-    //     const newPothole = {
-    //       id: oldPothole.id,
-    //       user_id: oldPothole.user_id,
-    //       address: null,
-    //       severity: oldPothole.severity,
-    //       statusCode: oldPothole.statusCode,
-    //       dateReported: oldPothole.dateReported
-    //     };
-    //     const latLng = {
-    //       lat: oldPothole.latitude,
-    //       lng: oldPothole.longitude
-    //     };
-    //     geocoder.geocode( {location: latLng}, (results, status) => {
-    //       if (status === "OK") {
-    //         if (results[0]) {
-    //           newPothole.address = results[0].formatted_address;
-    //           tempPotholesWithAddresses.push(newPothole);
-    //         }
-    //       }
-    //     });
-    //   });
-    // }
-
 }
 </script>
 
 <style>
+<<<<<<< Updated upstream
 div{
   font-family: Helvetica, sans-serif;
 }
@@ -144,5 +121,7 @@ div{
 #employee-button{
   width: 98%;
 }
+=======
+>>>>>>> Stashed changes
 
 </style>
