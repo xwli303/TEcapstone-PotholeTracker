@@ -88,7 +88,7 @@ export default {
 }
 .report-pothole{
     font-family: Helvetica, sans-serif;
-    padding-top: 40px;
+    padding-top: 50px;
 }
 #button{
     width: 94%;
