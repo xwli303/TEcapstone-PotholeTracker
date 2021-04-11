@@ -51,6 +51,9 @@ export default new Vuex.Store({
     // },
     SET_POTHOLES(state, potholes){
       state.potholes = potholes;
+    },
+    DELETE_LAST_POTHOLE(state) {
+      state.potholes.pop();
     }
   }
 })

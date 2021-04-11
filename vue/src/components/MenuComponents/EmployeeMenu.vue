@@ -77,17 +77,25 @@ export default {
 
         const tempStatus = this.statusFilter;
         const tempSeverity = this.severityFilter;
-        // Below creates a new, seperate array of potholes
-        const potholesToReturn = JSON.parse(JSON.stringify(this.$store.state.potholes));
 
-        potholesToReturn.forEach(pothole => {
+        // Below creates a new, seperate array of potholes
+        // const potholesToReturn = JSON.parse(JSON.stringify(this.$store.state.potholes));
+
+        this.$store.state.potholes.forEach(pothole => {
           // if status and severity are empty strings = all potholes are visible
           ( ((tempStatus == pothole.statusCode) || (tempStatus == '')) 
             && ((tempSeverity == pothole.severity) || tempSeverity == '') ) 
             ? pothole.visible = true : pothole.visible = false;
         });
 
-        this.$store.commit('SET_POTHOLES', potholesToReturn)
+        // for (let i = 0; i < this.$store.state.potholes.length; i++) {
+        //   ( ((tempStatus == this.$store.state.potholes[i].statusCode) || (tempStatus == '')) 
+        //     && ((tempSeverity == this.$store.state.potholes[i].severity) || tempSeverity == '') ) 
+        //     ? this.$store.state.potholes[i].visible = true : this.$store.state.potholes[i].visible = false;
+
+        // }
+
+        // this.$store.commit('SET_POTHOLES', potholesToReturn)
       }
     },
     // created() {

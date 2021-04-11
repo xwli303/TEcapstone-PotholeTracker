@@ -43,7 +43,7 @@ Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/sr
 					icon: icon,
 					title: message
 				})
-				this.marker.setVisible(this.visible); // Curly
+				this.marker.setVisible(this.visible); // Curly111
 				this.marker.setDraggable(true);   // dla 4/10
 				this.marker.addListener("click", () => {
 					let label={ text: "PHL", color:"black", fontSize:"14px", fontweight:"bold"}
@@ -54,7 +54,7 @@ Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/sr
 			})
 		},
 		beforeDestroy() {
-			this.marker.setMap(null)
+			// this.marker.setMap(null)
 			window.google.maps.event.clearInstanceListeners(this.marker)
 		},
 		render() {

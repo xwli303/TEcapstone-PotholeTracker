@@ -7,11 +7,12 @@
           <input id="inputfield" type="text" v-model="userAddress" />
           <button id="buttonform" v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Report</button>
       </form>
-      <form v-show="dbUpdated" v-on:submit.prevent id="confirmation-form">
+      <div v-show="dbUpdated" id="confirmation">
           Is this the right address?
           {{ userAddress }}
-          <button id="buttonform" v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Yes</button>
-      </form>
+          <button id="buttonyes" v-on:click="dbUpdated = !dbUpdated" >Yes</button>
+          <button id="buttonno" v-on:click="deletePothole" >No</button>
+      </div>
   </div>
 </template>
 
@@ -28,7 +29,8 @@ export default {
                 longitude: null,
                 severity: 1,
                 statusCode: 1,
-                dateReported: '2021-04-07'
+                dateReported: '2021-04-07',
+                visible: true
             },
             userAddress: null,
             dbUpdated: false
@@ -76,6 +78,10 @@ export default {
         },
         updateStore() {
             this.$store.commit('ADD_POTHOLE', this.pothole);
+        },
+        deletePothole() {
+            this.$store.commit('DELETE_LAST_POTHOLE');
+            this.dbUpdated = !this.dbUpdated;
         }
     }
 }
@@ -91,7 +97,10 @@ export default {
     font-family: Helvetica, sans-serif;
     padding-top: 50px;
 }
-#buttonform{
+#buttonyes{
+    width: 91%;
+}
+#buttonno {
     width: 91%;
 }
 #welcome{
