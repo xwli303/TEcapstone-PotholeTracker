@@ -35,6 +35,8 @@
         </button>
       </ul>
     </div>
+
+    <!-- this is the form that updates the pothole -->
     <div id="updatePotholeForm">
       <h3>Update Pothole Information</h3>
       <form id="update-status-form">
