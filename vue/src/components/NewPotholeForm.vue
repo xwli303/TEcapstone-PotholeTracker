@@ -1,6 +1,6 @@
 <template>
   <div class="report-pothole">
-     <p id="welcome">Welcome! <br><br>Thank you for your interest in improving our city. <br><br>• To see currently reported potholes, please see markers on the map. <br><br>• To report a pothole, please fill out the address in the field below. <br><br> Our team will address the pothole as soon as we can. </p>
+     <p id="welcome">Welcome! <br> Thank you for your interest in improving our city. <br>• To see currently reported potholes, please see the map. <br>• To report a pothole, please fill out the address in the field below. <br> Our team will address the pothole as soon as we can. </p>
       <p><strong>Report a Pothole:</strong></p>
       <form v-show="!dbUpdated" v-on:submit.prevent="submitForm" class="pothole-form">
           <label for="address"> Address: </label>
@@ -38,10 +38,12 @@ export default {
     },
     methods:{
         submitForm() {
+
             let addressLat = null;
             let addressLng = null;
             let tempPothole = this.pothole;
             let addToStore = this.updateStore;
+            let createDate = this.makeDate;
             let geocoder = new window.google.maps.Geocoder();
             if ( this.userAddress != null ) {
                 geocoder.geocode( {'address': this.userAddress}, 
@@ -58,6 +60,9 @@ export default {
 
                                 tempPothole.latitude = addressLat;
                                 tempPothole.longitude = addressLng;
+                                console.log(createDate())
+                                tempPothole.dateReported = createDate();
+
                                 
 
                                 PotholeService
@@ -79,9 +84,19 @@ export default {
         updateStore() {
             this.$store.commit('ADD_POTHOLE', this.pothole);
         },
-        deletePothole() {
-            this.$store.commit('DELETE_LAST_POTHOLE');
-            this.dbUpdated = !this.dbUpdated;
+        makeDate(){
+            let dateString = "";
+            let date = new Date();
+            let year = date.getFullYear().toString();
+            let month = (date.getMonth() + 1).toString();
+            let day = (date.getDate() + 1).toString();
+            if(date.getMonth() <10){
+              dateString =  year + "-0" + month + "-" + day;
+            }else{
+              dateString =  year + "-" + month + "-" + day;   
+            }
+            console.log(dateString);
+            return dateString;
         }
     }
 }
