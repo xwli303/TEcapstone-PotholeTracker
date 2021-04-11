@@ -56,5 +56,7 @@ export default {
 <style>
 #map {
     height: 900px;
+    margin-left: 10px;
+    margin-top:10px
 }
 </style>

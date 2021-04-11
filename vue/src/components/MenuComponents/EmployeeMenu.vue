@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="employee-menu-container">
     <p id="filter-potholes"><strong>Filter Potholes by:</strong></p>
     <form class="status-form" v-on:submit.prevent>
       <label for="status"> Status </label>
@@ -32,8 +32,22 @@
           v-bind:key="pothole.id"
           v-show="pothole.visible === true">
           ID: {{ pothole.id }} | Address: {{ pothole.address }}
-          </button>
+        </button>
       </ul>
+    </div>
+    <div id="updatePotholeForm">
+      <h3>Update Pothole Information</h3>
+      <form id="update-status-form">
+        <h3>Update Status</h3>
+      </form>
+      <form id="update-severity-form">
+        <select name="severity" id="update-severity" >
+          <option v-for="option in severityOptions" v-bind:value="option.value" :key="option.value">
+          {{option.text}}
+          </option>
+        </select>
+
+      </form>
     </div>
   </div>
 </template>
@@ -107,22 +121,31 @@ export default {
 <style>
 div {
   font-family: Helvetica, sans-serif;
+  
+}
+
+#employee-menu-container{
+  position: relative;
+  
 }
 
 #employee-buttons-list{
   padding-left: 0px;
   width: 93%;
+
 }
 #employee-button{
   width: 98%;
-  height: 45px;
+  height: auto;
+  display: inline-block
+
 }
 .filter-button{
   width: 92%;
 }
-#filter-potholes{
+/* #filter-potholes{
   padding-top: 100px;
-}
+} */
 #severity{
   width: 30%;
 }

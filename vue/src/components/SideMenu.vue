@@ -38,6 +38,10 @@ export default {
         "add-pothole"
         "add-pothole"
         "add-pothole";
+    overflow: scroll;
+    z-index: 1;
+    margin-top:120px;
+   
 }
 .add-pothole {
     grid-area: add-pothole;
