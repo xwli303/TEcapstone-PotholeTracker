@@ -113,7 +113,7 @@ export default {
     border-radius: 15px;
     padding: 30px 20px 50px 20px;
     margin-left: 30px;
-    margin-top: 60px;
+    margin-top: 6gi0px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
   }
 

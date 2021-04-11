@@ -166,9 +166,13 @@ div {
   
 }
 
-#employee-menu-container{
-  position: relative;
-  
+.employee-menu-container{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: inline-block;
+  z-index: 1;
 }
 
 #employee-buttons-list{
@@ -185,9 +189,7 @@ div {
 .filter-button{
   width: 92%;
 }
-/* #filter-potholes{
-  padding-top: 100px;
-} */
+
 #severity{
   width: 30%;
 }

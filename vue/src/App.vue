@@ -24,7 +24,7 @@
     padding-right: 10px;
     margin: 0 auto;
     padding-inline-start: 10px;
-    z-index: 2;
+    z-index: 5;
     height: 100px;
     background-color: white;
     align-items: center;
