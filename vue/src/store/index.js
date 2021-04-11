@@ -21,7 +21,6 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     potholes: [],
-    filteredPotholes: [],
     filter: 0
   },
   mutations: {
