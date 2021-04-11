@@ -38,9 +38,15 @@
     <div id="updatePotholeForm">
       <h3>Update Pothole Information</h3>
       <form id="update-status-form">
-        <h3>Update Status</h3>
+        <label for="status">Status</label>
+        <select name="status" id="update-status">
+          <option v-for="option in severityOptions" v-bind:value="option.value" :key="option.value">
+          {{option.text}}
+          </option>
+        </select>
       </form>
       <form id="update-severity-form">
+        <label for="severity-label">Severity</label>
         <select name="severity" id="update-severity" >
           <option v-for="option in severityOptions" v-bind:value="option.value" :key="option.value">
           {{option.text}}
