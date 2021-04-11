@@ -21,7 +21,24 @@ export default {
   created() {
         PotholeService.listPotholes()
         .then((response) => {
-            this.$store.state.potholes = response.data;
+            let newPotholeList = [];
+            response.data.forEach(oldPothole => {
+                const newPothole = {
+                    id: oldPothole.id,
+                    user_id: oldPothole.user_id,
+                    address: oldPothole.address,
+                    latitude: oldPothole.latitude,
+                    longitude: oldPothole.longitude,
+                    severity: oldPothole.severity,
+                    statusCode: oldPothole.statusCode,
+                    dateReported: oldPothole.dateReported,
+                    dateInspected: oldPothole.dateInspected,
+                    dateRepaired: oldPothole.dateRepaired,
+                    visible: true
+                };
+                newPotholeList.push(newPothole);
+            });
+            this.$store.state.potholes = newPotholeList;
         })
     }
 };

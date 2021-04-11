@@ -17,8 +17,8 @@ export default{
         return axios.get(`/all-potholes/get-pothole-by-id/${potholeId}`);
     },
 
-    updatePothole(potholeId){
-        return axios.put(`/all-potholes/update-pothole/${potholeId}`);
+    updatePothole(potholeId, pothole){
+        return axios.put(`/all-potholes/update-pothole/${potholeId}`, pothole);
     },
 
     deletePothole(potholeId){

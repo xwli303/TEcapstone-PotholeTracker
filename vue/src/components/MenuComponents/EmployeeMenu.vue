@@ -26,7 +26,8 @@
     </form>
     <div id="main-list">
       <ul id="employee-buttons">
-        <button id="employee-button" v-for="pothole in $store.state.filteredPotholes"
+        <!-- <button id="employee-button" v-for="pothole in $store.state.filteredPotholes" -->
+        <button id="employee-button" v-for="pothole in $store.state.potholes"
           v-bind:key="pothole.id">ID: {{ pothole.id }} | Address: {{ pothole.address }}</button>
       </ul>
     </div>
@@ -57,7 +58,7 @@ export default {
         ],
         severityOptions:[
           { text: '', value: ''},
-          {text: '5', value: '5'},
+          { text: '5', value: '5'},
           { text: '4', value: '4'},
           { text: '3', value: '3'},
           { text: '2', value: '2'},
@@ -69,43 +70,29 @@ export default {
     },
     methods: {
       //if status and severity are empty strings = return all potholes 
-      filterPotholes(){  
-        const tempStatus = this.statusFilter
-        const tempSeverity = this.severityFilter
-        let potholesToReturn = []
-        this.$store.state.potholes.forEach(pothole => {
-        let potholeToReturn = null
-          if(tempStatus != '') {
-            
-            if(tempSeverity != ''){
-              potholeToReturn = ((tempStatus == pothole.statusCode) && (tempSeverity == pothole.severity)) ? pothole : null
-              
-            } else {
-              potholeToReturn = tempStatus == pothole.statusCode ? pothole : null
+      filterPotholes() {  
 
-            }
-          } else {
-              if(tempSeverity != ''){
-                potholeToReturn = tempSeverity == pothole.severity ? pothole : null
-              } else {
-                potholeToReturn = pothole
-              }
-            } 
-            if(potholeToReturn != null) {
-              potholesToReturn.push(potholeToReturn)
-            }
-          })
-          this.$store.commit('ADD_FILTERED_POTHOLES', potholesToReturn)
+        const tempStatus = this.statusFilter;
+        const tempSeverity = this.severityFilter;
+        let potholesToReturn = [];
+
+        this.$store.state.potholes.forEach(pothole => {
+          ( ((tempStatus == pothole.statusCode) || (tempStatus == '')) 
+            && ((tempSeverity == pothole.severity) || tempSeverity == '') ) 
+            ? potholesToReturn.push(pothole) : pothole;
+        });
+
+        this.$store.commit('ADD_FILTERED_POTHOLES', potholesToReturn)
       }
     },
-    created(){
+    created() {
       this.$store.commit("SET_FILTERED_POTHOLES");
     }
 }
 </script>
 
 <style>
-div{
+div {
   font-family: Helvetica, sans-serif;
 }
 .status-form{
