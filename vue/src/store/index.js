@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     potholes: [],
+   
     filter: 0
   },
   mutations: {
@@ -57,6 +58,10 @@ export default new Vuex.Store({
     },
     DELETE_ALL_POTHOLES(state) {
       state.potholes = [];
+    },
+    GET_POTHOLE_BY_ID(state, potholeId){
+      return state.potholes.filter(pothole => 
+        pothole.id == potholeId);
     }
   }
 })
