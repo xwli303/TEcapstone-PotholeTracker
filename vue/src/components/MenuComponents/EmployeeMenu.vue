@@ -1,7 +1,7 @@
 <template>
   <div id="employee-menu-container">
-    <p id="filter-potholes"><strong>Filter Potholes by:</strong></p>
     <form id="filter-form" v-on:submit.prevent v-show="showFilterForm == true">
+      <p id="filter-potholes"><strong>Filter Potholes by:</strong></p>
       <label for="status"> Status </label>
       <select id="status" v-model="statusFilter">
         <option v-for="option in StatusOptions" v-bind:value="option.value" :key="option.value">
@@ -31,13 +31,13 @@
     </div>
 
     <!-- this is the form that updates the pothole -->
-    <form id="updatePotholeForm" v-if="showFilterForm == false" v-on:submit.prevent="submitUpdatedPothole">
+    <form id="updatePotholeForm" v-if="showFilterForm == false" v-on:submit.prevent="submitUpdatedPothole(updatedPothole[0])">
       <div v-for="pothole in updatedPothole" v-bind:key="pothole.id">
       <h3>Update Pothole Information</h3>
         <p>Pothole ID: {{pothole.id}}</p>
         <p>Address: {{pothole.address}}</p>
         <p>Lat/Long: {{pothole.latitude}}, {{pothole.longitude}}</p>
-        <p> Date Reported: {{pothole.dateReported}}</p>
+        <p>Date Reported: {{pothole.dateReported}}</p>
       
         <label for="status">Status</label>
         <select name="status" id="update-status" v-model="pothole.statusCode">
@@ -134,12 +134,14 @@ export default {
         this.updatedPothole = returnedPothole;
         this.showFilterForm = false;
       },
-      submitUpdatedPothole(potholeId, pothole){
+      submitUpdatedPothole(pothole){
+        pothole.severity = parseInt(pothole.severity);
+        pothole.statusCode = parseInt(pothole.statusCode);
         let filter = this.showFilterForm;
         let db = this.databaseUpdated;
         let text = this.dbTextUpdate;
-       PotholeService.updatePothole(potholeId, pothole).then((response) =>{ 
-        if(response.status =='OK'){
+       PotholeService.updatePothole(pothole).then((response) =>{ 
+        if(response.status == 200){
           filter = !filter;
           db = !db;
           text = "Pothole Updated!";

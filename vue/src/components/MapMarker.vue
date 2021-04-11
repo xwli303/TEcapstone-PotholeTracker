@@ -32,7 +32,7 @@ Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/sr
 				iconString = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
 				}
 				if(this.dent.severity > 2){
-				iconString = "http://maps.google.com/mapfiles/ms/icons/orang-dot.png"
+				iconString = "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
 				}
 				if(this.dent.severity > 3){
 				iconString = "http://maps.google.com/mapfiles/ms/icons/pink-dot.png"

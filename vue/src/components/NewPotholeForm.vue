@@ -11,7 +11,8 @@
           Is this the right address?
           {{ userAddress }}
           <button id="buttonyes" v-on:click="dbUpdated = !dbUpdated" >Yes</button>
-          <button id="buttonno" v-on:click="deletePothole" >No</button>
+          <button id="buttonno" >No</button>
+          <!-- <button id="buttonno" v-on:click="deletePothole" >No</button> -->
       </div>
   </div>
 </template>
