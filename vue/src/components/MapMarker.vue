@@ -6,7 +6,8 @@ Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/sr
 		props: {
 			lat: { type: Number, required: true },
 			lng: { type: Number, required: true },
-			dent:  { type: Object, required: true }    //dla 4/10
+			dent:  { type: Object, required: true }, //dla 4/10
+			visible: { type: Boolean, required: true}  //Curly
 		},
 		data: () => ({
 			marker: null
@@ -42,6 +43,7 @@ Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/sr
 					icon: icon,
 					title: message
 				})
+				this.marker.setVisible(this.visible); // Curly
 				this.marker.setDraggable(true);   // dla 4/10
 				this.marker.addListener("click", () => {
 					let label={ text: "PHL", color:"black", fontSize:"14px", fontweight:"bold"}

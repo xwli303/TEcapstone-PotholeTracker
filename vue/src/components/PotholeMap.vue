@@ -5,7 +5,8 @@
                 v-bind:key="pothole.id"
                 v-bind:dent="pothole"  
                 v-bind:lat="pothole.latitude" 
-                v-bind:lng="pothole.longitude">
+                v-bind:lng="pothole.longitude"
+                v-bind:visible="pothole.visible">
             </map-marker>
         </div>
     </div>

@@ -8,7 +8,7 @@
         {{option.text}}
         </option>
       </select>
-      <button id="filter" @click="filterPotholes" class="submit"> Filter </button>
+      <!-- <button id="filter" @click="filterPotholes" class="submit"> Filter </button> -->
       <!-- <ul>
             <button v-for="pothole in $store.state.filteredPotholes" v-bind:key="pothole.id">{{pothole.address}}</button>
       </ul> -->
@@ -27,8 +27,12 @@
     <div id="main-list">
       <ul id="employee-buttons">
         <!-- <button id="employee-button" v-for="pothole in $store.state.filteredPotholes" -->
-        <button id="employee-button" v-for="pothole in $store.state.potholes"
-          v-bind:key="pothole.id">ID: {{ pothole.id }} | Address: {{ pothole.address }}</button>
+        <button id="employee-button" 
+          v-for="pothole in $store.state.potholes"
+          v-bind:key="pothole.id"
+          v-show="pothole.visible === true">
+          ID: {{ pothole.id }} | Address: {{ pothole.address }}
+          </button>
       </ul>
     </div>
   </div>
@@ -68,26 +72,27 @@ export default {
         severityFilter:''
       }
     },
-    methods: {
-      //if status and severity are empty strings = return all potholes 
+    methods: { 
       filterPotholes() {  
 
         const tempStatus = this.statusFilter;
         const tempSeverity = this.severityFilter;
-        let potholesToReturn = [];
+        // Below creates a new, seperate array of potholes
+        const potholesToReturn = JSON.parse(JSON.stringify(this.$store.state.potholes));
 
-        this.$store.state.potholes.forEach(pothole => {
+        potholesToReturn.forEach(pothole => {
+          // if status and severity are empty strings = all potholes are visible
           ( ((tempStatus == pothole.statusCode) || (tempStatus == '')) 
             && ((tempSeverity == pothole.severity) || tempSeverity == '') ) 
-            ? potholesToReturn.push(pothole) : pothole;
+            ? pothole.visible = true : pothole.visible = false;
         });
 
-        this.$store.commit('ADD_FILTERED_POTHOLES', potholesToReturn)
+        this.$store.commit('SET_POTHOLES', potholesToReturn)
       }
     },
-    created() {
-      this.$store.commit("SET_FILTERED_POTHOLES");
-    }
+    // created() {
+    //   this.$store.commit("SET_FILTERED_POTHOLES");
+    // }
 }
 </script>
 

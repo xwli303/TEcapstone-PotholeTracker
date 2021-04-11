@@ -47,11 +47,11 @@ export default new Vuex.Store({
     UPDATE_FILTER(state, filter){
       state.filter = filter;
     },
-    SET_FILTERED_POTHOLES(state){
-      state.filteredPotholes = state.potholes;
-    },
-    ADD_FILTERED_POTHOLES(state, potholes){
-      state.filteredPotholes = potholes;
+    // SET_FILTERED_POTHOLES(state){
+    //   state.filteredPotholes = state.potholes;
+    // },
+    SET_POTHOLES(state, potholes){
+      state.potholes = potholes;
     }
   }
 })
