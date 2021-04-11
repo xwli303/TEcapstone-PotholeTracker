@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Filter Potholes</h1>
+    <p id="filter-potholes"><strong>Filter Potholes by:</strong></p>
     <form class="status-form" v-on:submit.prevent>
       <label for="status"> Status </label>
       <select id="status" v-model="statusFilter">
@@ -16,16 +16,16 @@
     
    <br>
     <form class="severity-form" v-on:submit.prevent>
-      <label for="severity">Severity</label>
+      <label for="severity">Severity </label>
       <select id="severity" v-model="severityFilter">
         <option v-for="option in severityOptions" v-bind:value="option.value" :key="option.value">
         {{option.text}}
         </option>
       </select>
-      <button id="filter" @click="filterPotholes" class="submit"> Filter </button>
+      <button id="filter" @click="filterPotholes" class="submit filter-button"> Filter </button>
     </form>
     <div id="main-list">
-      <ul id="employee-buttons">
+      <ul id="employee-buttons-list">
         <!-- <button id="employee-button" v-for="pothole in $store.state.filteredPotholes" -->
         <button id="employee-button" 
           v-for="pothole in $store.state.potholes"
@@ -100,15 +100,26 @@ export default {
 div {
   font-family: Helvetica, sans-serif;
 }
-.status-form{
-  padding-top: 50px;
-}
-#employee-buttons{
+
+#employee-buttons-list{
   padding-left: 0px;
   width: 93%;
 }
 #employee-button{
   width: 98%;
+  height: 45px;
+}
+.filter-button{
+  width: 92%;
+}
+#filter-potholes{
+  padding-top: 100px;
+}
+#severity{
+  width: 30%;
+}
+#status{
+  width: 30%;
 }
 
 </style>
