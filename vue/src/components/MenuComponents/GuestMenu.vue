@@ -1,5 +1,6 @@
 <template>
   <div id="container">
+    <p id="welcome">Welcome! <br> <br> Thank you for your interest in improving our city. <br><br> • To see currently reported potholes, please see markers on the map.<br> <br>• To report a pothole, please create an account and log in. <br><br> Our team will address fixing potholes as soon as we can. </p>
   </div>
 </template>
 
@@ -10,6 +11,8 @@ export default {
 </script>
 
 <style>
-
-
+#welcome{
+  padding-top: 50px;
+  padding-right: 15px;
+}
 </style>

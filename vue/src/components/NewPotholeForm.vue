@@ -1,6 +1,6 @@
 <template>
   <div class="report-pothole">
-     <p id="welcome">Welcome! <br> Thank you for your interest in improving our city. <br>• To see currently reported potholes, please see the map. <br>• To report a pothole, please fill out the address in the field below. <br> Our team will address the pothole as soon as we can. </p>
+     <p id="welcome">Welcome! <br><br>Thank you for your interest in improving our city. <br><br>• To see currently reported potholes, please see markers on the map. <br><br>• To report a pothole, please fill out the address in the field below. <br><br> Our team will address the pothole as soon as we can. </p>
       <p><strong>Report a Pothole:</strong></p>
       <form v-show="!dbUpdated" v-on:submit.prevent="submitForm" class="pothole-form">
           <label for="address"> Address: </label>
