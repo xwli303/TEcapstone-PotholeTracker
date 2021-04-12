@@ -13,11 +13,12 @@ import PotholeService from "../services/PotholeService";
 	
 
 		data: () => ({
-			marker: null
+			marker: null,
 		}),
 
 		mounted() {
 			//const myTest = this.testMethod;
+			const role = this.$store.state.user.authorities[0].name;
 			this.$parent.getMap(map => {
 				
 				// info window ********************
@@ -44,8 +45,8 @@ import PotholeService from "../services/PotholeService";
 				if(this.dent.dateRepaired){
 					infoString = infoString + "<h2>Repaired   : " + `${this.dent.dateRepaired}` + "</h2>"
 				}
-				if(this.$store.state.user.authorities[0].name === "ROLE_EMPLOYEE"){
-					console.log("employee")
+				if(role === "ROLE_EMPLOYEE"){
+					// console.log("employee")
 				
 				infoString = infoString +
 				"<h2 style=\"color:blue\";>Use Menu to Schedule Job</h2>" +
@@ -94,8 +95,9 @@ import PotholeService from "../services/PotholeService";
 					icon: icon,
 					title: message
 				})
-				this.marker.setVisible(this.visible); // Curly111
-				this.marker.setDraggable(true);   // dla 4/10
+				this.marker.setVisible(this.visible); // Curly
+				const isEmployee = (role === "ROLE_EMPLOYEE") ? true : false; // Curly
+				this.marker.setDraggable(isEmployee);   // dla 4/10, Curly
 
 				// infoWindow
 				const infowindow = new window.google.maps.InfoWindow({
@@ -105,7 +107,7 @@ import PotholeService from "../services/PotholeService";
 					infowindow.open(this.map, this.marker);
 				});
 				
-				if (this.$store.state.user.authorities[0].name === "ROLE_EMPLOYEE") {
+				if (role === "ROLE_EMPLOYEE") {
 					this.marker.addListener("rightclick", () => {
 						PotholeService.deletePothole(this.dent.id);
 						this.marker.setVisible(false);

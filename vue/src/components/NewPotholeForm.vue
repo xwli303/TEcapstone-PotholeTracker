@@ -2,16 +2,16 @@
   <div class="report-pothole">
      <p id="welcome">Welcome! <br> Thank you for your interest in improving our city. <br>• To see currently reported potholes, please see the map. <br>• To report a pothole, please fill out the address in the field below. <br> Our team will address the pothole as soon as we can. </p>
       <p><strong>Report a Pothole:</strong></p>
-      <form v-show="!dbUpdated" v-on:submit.prevent="submitForm" class="pothole-form">
+      <form v-show="!showConfirmForm" v-on:submit.prevent class="pothole-form">
           <label for="address"> Address: </label>
           <input id="inputfield" type="text" v-model="userAddress" />
-          <button id="buttonform" v-on:click="dbUpdated = !dbUpdated" class="btn-submit">Report</button>
+          <button id="buttonform" v-on:click="showConfirmForm = !showConfirmForm" class="btn-submit">Report</button>
       </form>
-      <div v-show="dbUpdated" id="confirmation">
+      <div v-show="showConfirmForm" id="confirmation">
           Is this the right address?
           {{ userAddress }}
-          <button id="buttonyes" v-on:click="dbUpdated = !dbUpdated" >Yes</button>
-          <!-- <button id="buttonno" v-on:click="deletePothole" >No</button> -->
+          <button id="buttonyes" v-on:click="submitForm">Yes</button>
+          <button id="buttonno" v-on:click="resetPothole">No</button>
       </div>
   </div>
 </template>
@@ -29,11 +29,11 @@ export default {
                 longitude: null,
                 severity: 1,
                 statusCode: 1,
-                dateReported: '2021-04-07',
+                dateReported: null,
                 visible: true
             },
             userAddress: null,
-            dbUpdated: false
+            showConfirmForm: false
         }
     },
     methods:{
@@ -60,10 +60,7 @@ export default {
 
                                 tempPothole.latitude = addressLat;
                                 tempPothole.longitude = addressLng;
-                                console.log(createDate())
                                 tempPothole.dateReported = createDate();
-
-                                
 
                                 PotholeService
                                     .reportPothole(tempPothole)
@@ -73,7 +70,7 @@ export default {
                                         }
                                     })
                                     .catch(error => {
-                                        console.log(error); 
+                                        window.alert("Error: " + error.message);
                                     });
                             }
                         }
@@ -83,7 +80,7 @@ export default {
         },
         updateStore() {
             this.$store.commit('ADD_POTHOLE', this.pothole);
-            location.reload();
+            this.showConfirmForm = !this.showConfirmForm;
         },
         makeDate(){
             let dateString = "";
@@ -96,8 +93,11 @@ export default {
             }else{
               dateString =  year + "-" + month + "-" + day;   
             }
-            console.log(dateString);
             return dateString;
+        },
+        resetPothole() {
+            this.pothole.address = null;
+            this.showConfirmForm = !this.showConfirmForm;
         }
     }
 }
