@@ -21,20 +21,37 @@ import PotholeService from "../services/PotholeService";
 			this.$parent.getMap(map => {
 				
 				// info window ********************
-                let infoString = 
+				let statusString = "Reported"
+				if(this.dent.statusCode == 2){
+					statusString = "Inspected"
+				}
+				if(this.dent.statusCode == 3){
+					statusString = "Repaired"
+				} 
+			
+                let infoString =
 				"<html>" +
 				"<body>" + 
 				"<div >" +
 				"<h2 style=\"color:blue\";>Pothole ID: " + `${this.dent.id}` + "</h2>" +
 				"<h2>" + `${this.dent.address}` + "</h2>" +
-				"<h2>Reported  : " + `${this.dent.dateReported}` + "</h2>" +
-				"<h2>Inspected : " + `${this.dent.dateReported}` + "</h2>" +
-				"<h2 style=\"color:blue\";>Use Menue to Schedule Job</h2>" + 
-				"<h2 style=\"color:red\";>Right Click to Delete</h2>" +
-				//"<button onclick=" +
-				//"console.log('xx')" +
-				//"\"myFunction()\"" +
-				//">Delete</button>" +
+				"<h2>Status    : " + statusString +
+				"<h2>Reported   : " + `${this.dent.dateReported}` + "</h2>"
+
+				if(this.dent.dateInspected){
+					infoString = infoString + "<h2>Inspected : " + `${this.dent.dateInspected}` + "</h2>"
+				}
+				if(this.dent.dateRepaired){
+					infoString = infoString + "<h2>Repaired   : " + `${this.dent.dateRepaired}` + "</h2>"
+				}
+				if(this.$store.state.user.authorities[0].name === "ROLE_EMPLOYEE"){
+					console.log("employee")
+				
+				infoString = infoString +
+				"<h2 style=\"color:blue\";>Use Menu to Schedule Job</h2>" +
+				"<h2 style=\"color:red\";>Right Click to Delete</h2>"
+				}
+                infoString = infoString +
 				"</div>" +
 				"<script>"+
 				"function myFunction(){" +
@@ -66,7 +83,9 @@ import PotholeService from "../services/PotholeService";
 				if(this.dent.dateInspected){
 					statusMessage = "Inspected on: " + `${this.dent.dateInspected}`
 				}
-				let message = idString + "\n" + "Reported on: " + `${this.dent.dateReported}` + "\n" +statusMessage
+				let message = idString + "\n" + "Reported on: " + 
+				`${this.dent.dateReported}` + "\n" + 
+				statusMessage
 				
 				this.marker = new window.google.maps.Marker({
 					
