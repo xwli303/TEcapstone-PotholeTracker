@@ -32,7 +32,7 @@ export default {
         loader.load().then(() => {
             this.map = new window.google.maps.Map(document.getElementById("map"), {
                 center: { lat: 39.9528, lng: -75.1635 },
-                zoom: 12
+                zoom: 13
             });
         })
     },

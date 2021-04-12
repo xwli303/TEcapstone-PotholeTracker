@@ -2,6 +2,7 @@
 Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/src/components/MapMarker.vue
 -->
 <script>
+import PotholeService from "../services/PotholeService";
 	export default {
 		props: {
 			lat: { type: Number, required: true },
@@ -20,13 +21,30 @@ Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/sr
 			this.$parent.getMap(map => {
 				
 				// info window ********************
-                let infoString = "<div>" + "<h2>The is the infoDiv </h2>" +
+                let infoString =
+				"<html>" +
+				"<body>" + 
+				"<div >" +
+				"<h2 style=\"color:blue\";>Pothole ID: " + `${this.dent.id}` + "</h2>" +
 				"<h2>" + `${this.dent.address}` + "</h2>" +
-				"<button onclick=\""+ `${this.testMethod()}` + "\">Press Me" +
-				"</button>" +
+				"<h2>Reported  : " + `${this.dent.dateReported}` + "</h2>" +
+				"<h2>Inspected : " + `${this.dent.dateReported}` + "</h2>" +
+				"<h2 style=\"color:blue\";>Use Menue to Schedule Job</h2>" +
+				"<h2 style=\"color:red\";>Right Click to Delete</h2>" +
+				//"<button onclick=" +
+				//"console.log('xx')" +
+				//"\"myFunction()\"" +
+				//">Delete</button>" +
+				"</div>" +
+				"<script>"+
+				"function myFunction(){" +
+				"console.log('xx')" +
+				"}</" + "script>" +
+				"</body>" +
+				"</html>"
 				
-				"</div>"
-				console.log(infoString);
+				
+				// color coding pothole severity
 				let iconString = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
 				if(this.dent.severity > 1){
 				iconString = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
@@ -41,13 +59,14 @@ Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/sr
 				iconString = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"	
 				}
 				
-				
-				let icon = {url: iconString} 
+				// title for Marker
+				let icon = {url: iconString}
+				let idString = "ID: " + `${this.dent.id}`
 				let statusMessage = "NOT Inspected"
-				if(this.dent.statusCode > 1){
+				if(this.dent.dateInspected){
 					statusMessage = "Inspected on: " + `${this.dent.dateInspected}`
 				}
-				let message = "Reported on: " + `${this.dent.dateReported}` + "\n" +statusMessage
+				let message = idString + "\n" + "Reported on: " + `${this.dent.dateReported}` + "\n" +statusMessage
 				
 				this.marker = new window.google.maps.Marker({
 					
@@ -59,16 +78,20 @@ Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/sr
 				this.marker.setVisible(this.visible); // Curly111
 				this.marker.setDraggable(true);   // dla 4/10
 
-				
+				// infoWindow
 				const infowindow = new window.google.maps.InfoWindow({
                 content: infoString,
                 });
 				this.marker.addListener("click", () => {
-					infowindow.open(map, this.marker);
-					//this.testMethod();
-					
+					infowindow.open(this.map, this.marker);
+				})
+				//if admin this.$store.state.user.authorities[0].name  ==  "ROLE_EMPLOYEE"  
+				this.marker.addListener("rightclick", () => {
+					PotholeService.deletePothole(this.dent.id);
+					this.marker.setVisible(false);
+					infowindow.close(this.map, this.marker);
 
-    })
+				})
 			})
 		},
 		beforeDestroy() {
