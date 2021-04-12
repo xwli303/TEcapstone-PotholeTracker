@@ -61,7 +61,7 @@
         <label for="date-repaired"> Date Repaired: </label>
         <input type="text" id="date-repaired" class="input-field" v-model="pothole.dateRepaired"/>
       </div>
-      <button class="submit">Update Pothole</button>
+      <button class="submit" id="update-pothole-button" >Update Pothole</button>
     </form>
     <button v-show="databaseUpdated" @click="databaseUpdated=false">{{dbTextUpdate}}</button>
   </div>
@@ -182,6 +182,9 @@ div {
   height: auto;
   display: inline-block
 
+}
+#update-pothole-button{
+  width: 98%;
 }
 .filter-button{
   width: 92%;
