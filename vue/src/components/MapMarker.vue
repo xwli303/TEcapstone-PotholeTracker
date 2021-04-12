@@ -21,7 +21,7 @@ import PotholeService from "../services/PotholeService";
 			this.$parent.getMap(map => {
 				
 				// info window ********************
-                let infoString =
+                let infoString = 
 				"<html>" +
 				"<body>" + 
 				"<div >" +
@@ -29,7 +29,7 @@ import PotholeService from "../services/PotholeService";
 				"<h2>" + `${this.dent.address}` + "</h2>" +
 				"<h2>Reported  : " + `${this.dent.dateReported}` + "</h2>" +
 				"<h2>Inspected : " + `${this.dent.dateReported}` + "</h2>" +
-				"<h2 style=\"color:blue\";>Use Menue to Schedule Job</h2>" +
+				"<h2 style=\"color:blue\";>Use Menue to Schedule Job</h2>" + 
 				"<h2 style=\"color:red\";>Right Click to Delete</h2>" +
 				//"<button onclick=" +
 				//"console.log('xx')" +
@@ -42,7 +42,7 @@ import PotholeService from "../services/PotholeService";
 				"}</" + "script>" +
 				"</body>" +
 				"</html>"
-				
+
 				
 				// color coding pothole severity
 				let iconString = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
@@ -84,14 +84,15 @@ import PotholeService from "../services/PotholeService";
                 });
 				this.marker.addListener("click", () => {
 					infowindow.open(this.map, this.marker);
-				})
-				//if admin this.$store.state.user.authorities[0].name  ==  "ROLE_EMPLOYEE"  
-				this.marker.addListener("rightclick", () => {
-					PotholeService.deletePothole(this.dent.id);
-					this.marker.setVisible(false);
-					infowindow.close(this.map, this.marker);
-
-				})
+				});
+				
+				if (this.$store.state.user.authorities[0].name === "ROLE_EMPLOYEE") {
+					this.marker.addListener("rightclick", () => {
+						PotholeService.deletePothole(this.dent.id);
+						this.marker.setVisible(false);
+						infowindow.close(this.map, this.marker);
+					})
+				}
 			})
 		},
 		beforeDestroy() {

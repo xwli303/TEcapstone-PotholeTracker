@@ -83,6 +83,7 @@ export default {
         },
         updateStore() {
             this.$store.commit('ADD_POTHOLE', this.pothole);
+            location.reload();
         },
         makeDate(){
             let dateString = "";

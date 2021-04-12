@@ -142,20 +142,21 @@ export default {
         let filter = this.showFilterForm;
         let db = this.databaseUpdated;
         let text = this.dbTextUpdate;
-       PotholeService.updatePothole(pothole).then((response) =>{ 
-        if(response.status == 200){
+        PotholeService.updatePothole(pothole).then((response) =>{ 
+          if(response.status == 200){
+            filter = !filter;
+            db = !db;
+            text = "Pothole Updated!";
+            console.log(text);
+            location.reload();
+          }
+        })
+        .catch(error => {
           filter = !filter;
           db = !db;
-          text = "Pothole Updated!";
+          text = "There was an error: " + error.response.statusText;
           console.log(text);
-        }
-       })
-       .catch(error => {
-         filter = !filter;
-         db = !db;
-         text = "There was an error: " + error.response.statusText;
-         console.log(text);
-       })
+        })
       }
     },
 

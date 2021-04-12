@@ -34,9 +34,9 @@
         required
       />
       <br>
-      <button id="button" type="submit">Sign in</button>
+      <button id="button1" type="submit">Sign in</button>
       <br>
-      <button id="button" @click="guestLogin">Guest Account</button>
+      <button id="button2" @click="guestLogin">Guest Account</button>
       <br>
       <router-link id = "link" :to="{ name: 'register' }">Need an account?</router-link>
     </form>
@@ -145,9 +145,13 @@ export default {
     margin:10px 0px 10px 0px;
     
   }
-  #button{
+  #button1{
     width: 63%;
   }
+  #button2{
+    width: 63%;
+  }
+
 
   .login-image{
   height: 100px;
