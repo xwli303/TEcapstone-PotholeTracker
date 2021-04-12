@@ -39,27 +39,27 @@
         <p>Lat/Long: {{pothole.latitude}}, {{pothole.longitude}}</p>
         <p>Date Reported: {{pothole.dateReported}}</p>
       
-        <label for="status">Status</label>
+        <label for="status">Status: </label>
         <select name="status" id="update-status" v-model="pothole.statusCode">
           <option v-for="option in StatusOptions" v-bind:value="option.value" :key="option.value">
           {{option.text}}
           </option>
         </select>
-        <br>
-        <label for="severity-label">Severity</label>
+        <br><br>
+        <label for="severity-label">Severity: </label>
         <select name="severity" id="update-severity" v-model="pothole.severity">
           <option v-for="option in severityOptions" v-bind:value="option.value" :key="option.value">
           {{option.text}}
           </option>
         </select>
-        <br>
-        <label for="date-inspected"> Date Inspected </label>
+        <br><br>
+        <label for="date-inspected"> Date Inspected: </label>
         <input  type="text" id="date-inspected" class="input-field" v-model="pothole.dateInspected"/>
         <br>
-        <label for="date-repaired"> Date Repaired </label>
+        <label for="date-repaired"> Date Repaired: </label>
         <input type="text" id="date-repaired" class="input-field" v-model="pothole.dateRepaired"/>
       </div>
-      <button class="submit">Update Pothole</button>
+      <button class="submit" id="employee-button">Update Pothole</button>
     </form>
     <button v-show="databaseUpdated" @click="databaseUpdated=false">{{dbTextUpdate}}</button>
   </div>
@@ -185,12 +185,10 @@ div {
   width: 92%;
 }
 
-#severity{
+#status, #update-status, #severity, #update-severity{
   width: 30%;
 }
-#status{
-  width: 30%;
-}
+
 .input-field{
     border: solid black 3px;
     width: 93%;
