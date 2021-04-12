@@ -12,7 +12,6 @@ export default {
 
 <style>
 #welcome{
-  padding-top: 50px;
   padding-right: 15px;
 }
 </style>

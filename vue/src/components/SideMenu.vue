@@ -30,9 +30,6 @@ export default {
 
 
 <style>
-*{
-    scroll-behavior: smooth;
-}
 .side-container {
     display: grid;
     padding-left: 10px;
@@ -44,7 +41,7 @@ export default {
     overflow: scroll;
     z-index: 1;
      margin-top:120px;
-   
+    
 }
 .add-pothole {
     grid-area: add-pothole;
@@ -55,4 +52,5 @@ export default {
     justify-content: center;
     align-items: center;
 }
+
 </style>

@@ -59,10 +59,9 @@ export default {
 .side-menu {
   grid-area: side-menu;
   width: 20%;
-  position: absolute;
   right: 0;
   height: 100%;
-  position: fixed;
+  position: absolute;
   /* z-index: 1; */
   left: 0;
   top: 0;

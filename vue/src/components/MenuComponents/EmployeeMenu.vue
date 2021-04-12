@@ -1,5 +1,5 @@
 <template>
-  <div id="employee-menu-container">
+  <div class="employee-menu-container">
     <form id="filter-form" v-on:submit.prevent v-show="showFilterForm == true">
       <p id="filter-potholes"><strong>Filter Potholes by:</strong></p>
       <label for="status"> Status </label>
@@ -54,10 +54,10 @@
         </select>
         <br>
         <label for="date-inspected"> Date Inspected </label>
-        <input type="text" id="date-inspected" v-model="pothole.dateInspected"/>
+        <input  type="text" id="date-inspected" class="input-field" v-model="pothole.dateInspected"/>
         <br>
         <label for="date-repaired"> Date Repaired </label>
-        <input type="text" id="date-repaired" v-model="pothole.dateRepaired"/>
+        <input type="text" id="date-repaired" class="input-field" v-model="pothole.dateRepaired"/>
       </div>
       <button class="submit">Update Pothole</button>
     </form>
@@ -167,12 +167,7 @@ div {
 }
 
 .employee-menu-container{
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  display: inline-block;
-  z-index: 1;
+  padding-right: 15px;
 }
 
 #employee-buttons-list{
@@ -196,5 +191,8 @@ div {
 #status{
   width: 30%;
 }
-
+.input-field{
+    border: solid black 3px;
+    width: 93%;
+}
 </style>
