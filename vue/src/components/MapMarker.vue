@@ -109,9 +109,11 @@ import PotholeService from "../services/PotholeService";
 				
 				if (role === "ROLE_EMPLOYEE") {
 					this.marker.addListener("rightclick", () => {
-						PotholeService.deletePothole(this.dent.id);
-						this.marker.setVisible(false);
-						infowindow.close(this.map, this.marker);
+						if (window.confirm("Are you sure you want to delete this pothole?")) {
+							PotholeService.deletePothole(this.dent.id);
+							this.marker.setVisible(false);
+							infowindow.close(this.map, this.marker);
+						}
 					})
 				}
 			})
