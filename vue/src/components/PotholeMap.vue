@@ -34,7 +34,24 @@ export default {
                 center: { lat: 39.9528, lng: -75.1635 },
                 zoom: 13
             });
+
+///*********** */
+            this.map.addListener("click",(mapsMouseEvent) => {
+				console.log(mapsMouseEvent.latLng.lat())
+				
+            
+             let infoWindow = new this.google.maps.InfoWindow({
+                position: mapsMouseEvent.latLng,
+                });
+            this.infoWindow.setContent(
+             JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+             );
+             infoWindow.open(this.map);
+            });
+
+
         })
+        
     },
     methods: { 
         // Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/src/App.vue lines 34-41

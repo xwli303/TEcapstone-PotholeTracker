@@ -61,22 +61,22 @@ import PotholeService from "../services/PotholeService";
 				"</body>" +
 				"</html>"
 
-				
+				let iconString = null
 				// color coding pothole severity
-				let iconString = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
-				if(this.dent.severity > 1){
+				if(this.dent.severity == 1){
+				iconString = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+				}
+				if(this.dent.severity == 2){
 				iconString = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
 				}
-				if(this.dent.severity > 2){
+				if(this.dent.severity == 3){
 				iconString = "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
 				}
-				if(this.dent.severity > 3){
-				iconString = "http://maps.google.com/mapfiles/ms/icons/pink-dot.png"
-				}
-				if(this.dent.severity > 4){
-				iconString = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"	
-				}
-				
+			
+				//GET Lat Long from MOUSE
+
+
+
 				// title for Marker
 				let icon = {url: iconString}
 				let idString = "ID: " + `${this.dent.id}`
@@ -116,6 +116,7 @@ import PotholeService from "../services/PotholeService";
 						}
 					})
 				}
+				
 			})
 		},
 		beforeDestroy() {
