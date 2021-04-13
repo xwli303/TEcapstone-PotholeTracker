@@ -205,6 +205,7 @@ button{
   width: 92%;
   box-shadow: 1px 1px 2px #888888;
 }
+<<<<<<< Updated upstream
 
 button:hover{
   background-color:rgb(208, 233, 250);
@@ -212,6 +213,10 @@ button:hover{
 
 button:active{
   background-color: rgb(128, 198, 245);
+=======
+p{
+    font-size: 20px;
+>>>>>>> Stashed changes
 }
 
 #severity{

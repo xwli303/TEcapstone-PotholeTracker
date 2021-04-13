@@ -50,7 +50,7 @@ export default{
 
 .top {
 font-family: Helvetica, sans-serif;
-font-size: 20px;
+font-size: 25px;
 font-weight: bold;
 color:black;
 text-decoration: none;
@@ -75,7 +75,7 @@ text-decoration: none;
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
 #title{
   font-family: "Kanit", Helvetica, sans-serif;
-  font-size:30px;
+  font-size:45px;
   padding-left: 10px;
 }
 

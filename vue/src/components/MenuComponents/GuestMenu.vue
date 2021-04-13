@@ -14,4 +14,7 @@ export default {
 #welcome{
   padding-right: 15px;
 }
+p{
+    font-size: 20px;
+}
 </style>

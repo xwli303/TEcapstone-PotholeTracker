@@ -1,6 +1,27 @@
 <template>
   <div class="report-pothole">
-     <p id="welcome">Welcome! <br> Thank you for your interest in improving our city. <br>• To see currently reported potholes, please see the map. <br>• To report a pothole, please fill out the address in the field below. <br> Our team will address the pothole as soon as we can. </p>
+     <p id="welcome">Welcome! <br><br> Thank you for your interest in improving our city.<br> <br>• To see currently reported potholes, please see the map.<br> <br>• Pothole severity is as follows: </p>
+      <div id="green-marker">
+        <img class = "marker" src="@/assets/1.png" alt = "logo">
+        <p> Least Severe (1)</p>
+        <br>
+      </div>
+       <div id="yellow-marker">
+        <img class = "marker" src="@/assets/2.png" alt = "logo">
+        <p> Medium Severity (2)</p>
+        <br>
+      </div>
+       <div id="orange-marker">
+        <img class = "marker" src="@/assets/3.png" alt = "logo">
+        <p> High Severity (3)</p>
+        <br>
+      </div>
+     <div id="red-marker">
+        <img class = "marker" src="@/assets/4.png" alt = "logo"> 
+        <p>  Maximum Severity (4 - 5)</p>
+        <br>
+      </div>
+      <p>• To report a pothole, please fill out the address in the field below. <br><br> Our team will address the pothole as soon as we can.</p>
       <p><strong>Report a Pothole:</strong></p>
       <form v-show="!showConfirmForm" v-on:submit.prevent class="pothole-form">
           <label for="address"> Address: </label>
@@ -112,9 +133,15 @@ export default {
     width: 86%;
 
 }
+p{
+    font-size: 20px;
+}
+.marker{
+    height: 20px;
+    width: auto;
+}
 .report-pothole{
     font-family: Helvetica, sans-serif;
-    padding-top: 50px;
 }
 #buttonyes{
     width: 91%;
@@ -130,4 +157,10 @@ export default {
     border: solid black 3px;
     width: 86%;
 }
+#red-marker, #green-marker, #yellow-marker, #orange-marker{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
 </style>
