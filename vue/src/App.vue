@@ -16,6 +16,7 @@
     <router-view />
   </div>
 </template>
+
 <script>
 import Spinner from "@/components/Spinner.vue";
 import {mapState} from 'vuex'
@@ -29,10 +30,7 @@ export default{
     })
   }  
 };
-
-
 </script>
-
 
 <style>
   #flexbox{
@@ -79,4 +77,7 @@ text-decoration: none;
   padding-left: 10px;
 }
 
+@media only screen and (max-width: 600px) {
+  
+}
 </style>
