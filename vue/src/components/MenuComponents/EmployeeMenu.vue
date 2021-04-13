@@ -212,6 +212,7 @@ button:hover{
 
 button:active{
   background-color: rgb(128, 198, 245);
+}
 p{
     font-size: 20px;
 }
