@@ -17,7 +17,7 @@
         <br>
       </div>
      <div id="red-marker">
-        <img class = "marker" src="@/assets/4.png" alt = "logo"> 
+        <img id="red-marker-image" class = "marker" src="@/assets/4.png" alt = "logo"> 
         <p>  Maximum Severity (4 - 5)</p>
         <br>
       </div>
@@ -161,6 +161,10 @@ p{
     display: flex;
     justify-content: left;
     align-items: center;
+}
+#red-marker-image{
+    padding-right: 4px;
+    padding-left: 5px;
 }
 
 </style>
