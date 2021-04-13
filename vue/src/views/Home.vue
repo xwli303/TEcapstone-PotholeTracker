@@ -69,4 +69,5 @@ export default {
 .pothole-map {
   grid-area: pothole-map;
 }
+
 </style>

@@ -210,14 +210,15 @@ button:hover{
   background-color:rgb(208, 233, 250);
 }
 
-button:active{
+button:active {
   background-color: rgb(128, 198, 245);
-}
-p{
+} 
+
+p {
     font-size: 20px;
 }
 
-#severity{
+#severity {
   width: 30%;
 }
 #status{
