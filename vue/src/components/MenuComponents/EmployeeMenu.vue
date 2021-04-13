@@ -157,7 +157,7 @@ export default {
             db = !db;
             text = "Pothole Updated!";
             console.log(text);
-            location.reload();
+            // location.reload();
           }
         })
         .catch(error => {

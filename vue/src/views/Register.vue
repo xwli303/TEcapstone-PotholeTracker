@@ -6,7 +6,7 @@
         {{ registrationErrorMsg }}
       </div>
       <label for="username" class="sr-only">Username</label>
-      <br>
+      <br class="mobile-hide">
       <input
         type="text"
         id="username"
@@ -18,7 +18,7 @@
       />
       <br>
       <label for="password" class="sr-only">Password</label>
-      <br>
+      <br class="mobile-hide">
       <input
         type="password"
         id="password"
@@ -27,6 +27,7 @@
         v-model="user.password"
         required
       />
+      <br>
       <input
         type="password"
         id="confirmPassword"
@@ -113,7 +114,7 @@ export default {
     border-radius: 15px;
     padding: 30px 20px 50px 20px;
     margin-left: 30px;
-    margin-top: 6gi0px;
+    margin-top: 60px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
   }
 
@@ -149,5 +150,42 @@ export default {
   }
 #button{
     width: 63%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    #register{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    background-image: url('~@/assets/philadelphia_skyline.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-repeat: no-repeat;
+  }
+    .form-register{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    background-color: rgba(194, 190, 190, 0.808);
+    position: left;
+    top:50%;
+    left: 50%;
+    width: 90%;
+    border-radius: 15px;
+    padding: 30px 0 50px 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+  .mobile-hide {
+    display: none;
+  }
+
+
   }
 </style>

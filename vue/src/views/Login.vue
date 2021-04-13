@@ -14,7 +14,7 @@
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
       <label for="username" class="sr-only">Username</label>
-      <br>
+      <br class="break-to-hide">
       <input
         type="text"
         id="username"
@@ -23,9 +23,9 @@
         required
         autofocus
       />
-      <br>
+      <br class="break-to-hide">
       <label for="password" class="sr-only">Password</label>
-      <br>
+      <br class="break-to-hide">
       <input
         type="password"
         id="password"
@@ -35,7 +35,7 @@
       />
       <br>
       <button id="button1" type="submit">Sign in</button>
-      <br>
+      <br id="button-break">
       <button id="button2" @click="guestLogin">Guest Account</button>
       <br>
       <router-link id = "link" :to="{ name: 'register' }">Need an account?</router-link>
@@ -167,5 +167,54 @@ export default {
     color: grey;
     text-decoration: none;
   }
+
+  @media only screen and (max-width: 600px) {
+
+    #login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('~@/assets/philadelphia_skyline.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-repeat: no-repeat;
+    }
+    .form-signin{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(194, 190, 190, 0.808);
+      position: left;
+      top:50%;
+      left: 50%;
+      width: 300px;
+      height: 70%;
+      border-radius: 15px;
+      padding: 30px 20px 50px 20px;
+      font-family: Helvetica, sans-serif;
+      margin: 10px 10px 10px 10px;
+  }
+  .philly{
+    font-size: 30px;
+  }
+  .login-image {
+    height: 70px;
+  }
+  #username,#password {
+    margin-bottom: 0;
+  }
+  #button1,#button2 {
+    margin: 0 0 0 0;
+  }
+  .break-to-hide {
+    display: none;
+  }
+  label {
+    margin: 5px 0;
+  }
+}
 
 </style>
