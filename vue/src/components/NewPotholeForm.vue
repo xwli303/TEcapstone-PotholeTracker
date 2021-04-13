@@ -87,13 +87,11 @@ export default {
                                 PotholeService
                                     .reportPothole(tempPothole)
                                     .then(response => {
-                                        this.$store.commit('SHOW_SPINNER', true);
                                         if(response.status === 201 || response.status === 200) {
                                             addToStore();
                                         }
                                     })
                                     .catch(error => {
-                                        this.$store.commit('SHOW_SPINNER', false);
                                         window.alert("Error: " + error.message);
                                     });
                             }
