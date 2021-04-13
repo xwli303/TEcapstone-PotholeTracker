@@ -70,4 +70,22 @@ export default {
   grid-area: pothole-map;
 }
 
+@media only screen and (max-width: 600px) {
+  .side-container {
+    display: none;
+  }
+  .home-container {
+    display: grid;
+    grid-template-areas: 
+      "pothole-map";
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .pothole-map {
+    height: 100%;
+  }
+
+}
+
 </style>

@@ -7,15 +7,14 @@
       <div id="icon">
         <img class = "image" src="@/assets/blacklogo.jpg" alt = "logo">
         <h1 id="title">PHILLY POTHOLE TRACKER</h1>
-        </div>
-      <div id="nav">
-      <router-link class="top"  v-bind:to="{ name: 'home' }">Home | </router-link>
-      <router-link class="top" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> Logout</router-link>
-      <router-link class="top" v-bind:to="{ name: 'pothole-view'}" v-if="$store.state.user.authorities[0].name === 'ROLE_EMPLOYEE'"> | List </router-link>
       </div>
-      
+      <div id="nav">
+        <router-link class="top"  v-bind:to="{ name: 'home' }">Home </router-link>
+        <p class="top">|</p>
+        <router-link class="top" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> Logout</router-link>
+      </div>
     </div>
-    <router-view />
+    <router-view id="router-view" />
   </div>
 </template>
 
@@ -47,6 +46,10 @@ export default{
     background-color: white;
     align-items: center;
   }
+  #nav {
+    display: flex;
+    /* justify-content: space-evenly; */
+  }
 
 .top {
 font-family: Helvetica, sans-serif;
@@ -57,6 +60,11 @@ text-decoration: none;
 vertical-align: middle;
 margin-top: 50px;
 }
+
+  p.top {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 
 #icon{
   display: flex;
@@ -89,6 +97,38 @@ text-decoration: none;
 }
 
 @media only screen and (max-width: 600px) {
+  #app {
+    display: flex;
+    flex-direction: column;
+
+  }
+  #flexbox {
+    
+  }
   
+  #router-view {
+    height: 100%;
+  }
+
+  #title {
+    font-size: 25px;
+  }
+
+  #nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .top {
+    font-size: 20px;
+  }
+
+  p.top {
+    margin-bottom: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
 }
 </style>

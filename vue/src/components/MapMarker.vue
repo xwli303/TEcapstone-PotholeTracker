@@ -33,8 +33,11 @@ import PotholeService from "../services/PotholeService";
                 let infoString =
 				"<html>" +
 				"<body>" + 
-				"<div >" +
-				"<h2 style=\"color:blue\";>Pothole ID: " + `${this.dent.id}` + "</h2>" +
+				"<div >" ;
+				if (role === "ROLE_EMPLOYEE") {
+				"<h2 style=\"color:blue\";>Pothole ID: " + `${this.dent.id}` + "</h2>" ;
+				}
+				infoString = infoString +
 				"<h2>" + `${this.dent.address}` + "</h2>" +
 				"<h2>Status    : " + statusString +
 				"<h2>Reported   : " + `${this.dent.dateReported}` + "</h2>"

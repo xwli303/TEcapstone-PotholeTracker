@@ -179,4 +179,11 @@ export default {
     position: relative;
 }
 
+@media only screen and (max-width: 600px) {
+    #map {
+        margin-left: 0;
+        width: 100%;
+        height: 500px;
+    }
+}
 </style>
