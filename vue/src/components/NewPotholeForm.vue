@@ -143,6 +143,9 @@ p{
 .report-pothole{
     font-family: Helvetica, sans-serif;
 }
+#buttonform{
+    width: 90%;
+}
 #buttonyes{
     width: 91%;
 }
