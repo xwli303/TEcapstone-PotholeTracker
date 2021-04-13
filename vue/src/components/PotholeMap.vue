@@ -21,9 +21,6 @@ export default {
     data() {
         return {
             map: null,
-<<<<<<< Updated upstream
-            isLoading: true
-=======
             pothole:{
                 user_id: this.$store.state.user.id,
                 address: null,
@@ -36,7 +33,6 @@ export default {
             },
            
             // isLoading: true
->>>>>>> Stashed changes
         }
     },
     name: "PotholeMap",
