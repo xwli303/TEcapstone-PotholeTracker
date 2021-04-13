@@ -58,6 +58,7 @@ export default {
                                 addressLat = potholeLatLng.lat();
                                 addressLng = potholeLatLng.lng();
 
+
                                 tempPothole.latitude = addressLat;
                                 tempPothole.longitude = addressLng;
                                 tempPothole.dateReported = createDate();
