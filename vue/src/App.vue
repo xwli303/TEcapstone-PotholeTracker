@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <spinner v-if="showLoading"> </spinner>
     <div id="flexbox" v-if="$store.state.token != ''">
       <div id="icon">
         <img class = "image" src="@/assets/blacklogo.jpg" alt = "logo">
@@ -15,6 +16,23 @@
     <router-view />
   </div>
 </template>
+<script>
+import Spinner from "@/components/Spinner.vue";
+import {mapState} from 'vuex'
+export default{
+  components: {
+     Spinner 
+  },
+  computed: {
+    ...mapState({
+      showLoading: state => state.isLoading
+    })
+  }  
+};
+
+
+</script>
+
 
 <style>
   #flexbox{

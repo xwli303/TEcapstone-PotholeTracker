@@ -21,7 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     potholes: [],
-   
+    isLoading: false,
     filter: 0
   },
   mutations: {
@@ -62,6 +62,9 @@ export default new Vuex.Store({
     GET_POTHOLE_BY_ID(state, potholeId){
       return state.potholes.filter(pothole => 
         pothole.id == potholeId);
+    },
+    SHOW_SPINNER(state, payload){
+      state.isLoading=payload;
     }
   }
 })

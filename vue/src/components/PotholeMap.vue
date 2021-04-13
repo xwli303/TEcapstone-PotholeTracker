@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             map: null,
-            // isLoading: true
+            isLoading: true
         }
     },
     name: "PotholeMap",
@@ -55,6 +55,7 @@ export default {
     },
     methods: { 
         // Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/src/App.vue lines 34-41
+        
         getMap(callback) {
             let vm = this;
             function checkForMap() {
@@ -72,8 +73,10 @@ export default {
 
 <style>
 #map {
-    height: 900px;
+    height: 100vh;
+    width: auto;
     margin-left: 10px;
-    margin-top:10px
+    margin-top:10px;
+    
 }
 </style>

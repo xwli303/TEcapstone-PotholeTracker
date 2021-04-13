@@ -1,5 +1,6 @@
 <template>
   <div class="employee-menu-container">
+    
     <form id="filter-form" v-on:submit.prevent v-show="showFilterForm == true">
       <p id="filter-potholes"><strong>Filter Potholes by:</strong></p>
       <label for="status"> Status </label>
@@ -29,7 +30,9 @@
         </button>
       </ul>
     </div>
-
+    
+    
+  
     <!-- this is the form that updates the pothole -->
     <form id="updatePotholeForm" v-if="showFilterForm == false" v-on:submit.prevent="submitUpdatedPothole(updatedPothole[0])">
       <div v-for="pothole in updatedPothole" v-bind:key="pothole.id">
@@ -39,31 +42,31 @@
         <p>Lat/Long: {{pothole.latitude}}, {{pothole.longitude}}</p>
         <p>Date Reported: {{pothole.dateReported}}</p>
       
-        <label for="status">Status: </label>
+        <label for="status">Status</label>
         <select name="status" id="update-status" v-model="pothole.statusCode">
           <option v-for="option in StatusOptions" v-bind:value="option.value" :key="option.value">
           {{option.text}}
           </option>
         </select>
         <br>
-        <br>
-        <label for="severity-label">Severity: </label>
+        <label for="severity-label">Severity</label>
         <select name="severity" id="update-severity" v-model="pothole.severity">
           <option v-for="option in severityOptions" v-bind:value="option.value" :key="option.value">
           {{option.text}}
           </option>
         </select>
         <br>
-        <br>
-        <label for="date-inspected"> Date Inspected: </label>
+        <label for="date-inspected"> Date Inspected </label>
         <input  type="text" id="date-inspected" class="input-field" v-model="pothole.dateInspected"/>
         <br>
-        <label for="date-repaired"> Date Repaired: </label>
+        <label for="date-repaired"> Date Repaired </label>
         <input type="text" id="date-repaired" class="input-field" v-model="pothole.dateRepaired"/>
       </div>
-      <button class="submit" id="update-pothole-button" >Update Pothole</button>
+      <button class="submit">Update Pothole</button>
+      <button >Return to All Potholes</button>
     </form>
     <button v-show="databaseUpdated" @click="databaseUpdated=false">{{dbTextUpdate}}</button>
+    
   </div>
 </template>
 
@@ -75,44 +78,48 @@ export default {
     
     data() {
       return {
-      updatedPothole: {
-        address: null,
-        dateInspected: null,
-        dateRepaired: null,
-        dateReported: null,
-        id: 1,
-        latitude: null,
-        longitude: null,
-        severity: null,
-        statusCode: null,
-        user_id: null,
-        visible: true },
-      StatusOptions: [
-        { text: '', value: ''},
-        { text: 'Reported', value: '1'},
-        { text: 'Inspected', value: '2'},
-        { text: 'Repaired', value: '3'}
-      ],
-      severityOptions:[
-        { text: '', value: ''},
-        { text: '5', value: '5'},
-        { text: '4', value: '4'},
-        { text: '3', value: '3'},
-        { text: '2', value: '2'},
-        { text: '1', value: '1'}
-      ],
-      statusFilter:'',
-      severityFilter:'',
-      showFilterForm: true,
-      databaseUpdated: false,
-      dbTextUpdate:''
-      }
+        updatedPothole: {
+          address: null,
+          dateInspected: null,
+          dateRepaired: null,
+          dateReported: null,
+          id: 1,
+          latitude: null,
+          longitude: null,
+          severity: null,
+          statusCode: null,
+          user_id: null,
+          visible: true
+        },
+        StatusOptions: [
+          { text: 'All', value: ''},
+          { text: 'Reported', value: '1'},
+          { text: 'Inspected', value: '2'},
+          { text: 'Repaired', value: '3'}
+        ],
+        severityOptions:[
+          { text: 'All', value: ''},
+          { text: '5', value: '5'},
+          { text: '4', value: '4'},
+          { text: '3', value: '3'},
+          { text: '2', value: '2'},
+          { text: '1', value: '1'}
+        ],
+        statusFilter:'',
+        severityFilter:'',
+        showFilterForm: true,
+        databaseUpdated: false,
+        dbTextUpdate:'',
+        isLoading: true
+      };
+        
     },
     methods: { 
       filterPotholes() {  
-
         const tempStatus = this.statusFilter;
         const tempSeverity = this.severityFilter;
+
+        this.$store.commit('SHOW_SPINNER', true);
 
         // Below creates a new, seperate array of potholes
         const potholesToReturn = JSON.parse(JSON.stringify(this.$store.state.potholes));
@@ -129,12 +136,14 @@ export default {
         for (let i = 0; i < potholesToReturn.length; i++) {
           this.$store.commit('ADD_POTHOLE', potholesToReturn[i]);
         }
+        this.$store.commit('SHOW_SPINNER', false);
       },
       showPopulatedPotholeForm(potholeId){
         const returnedPothole = this.$store.state.potholes.filter(pothole => 
         pothole.id == potholeId);
         this.updatedPothole = returnedPothole;
         this.showFilterForm = false;
+        this.isLoading = false;
       },
       submitUpdatedPothole(pothole){
         pothole.severity = parseInt(pothole.severity);
@@ -156,9 +165,14 @@ export default {
           db = !db;
           text = "There was an error: " + error.response.statusText;
           console.log(text);
-        })
+        }
+       )
+      },
+      showAllPotholes(){
+        return this.$store.state.potholes;
       }
-    },
+
+    }
 
 }
 </script>
@@ -181,18 +195,29 @@ div {
 #employee-button{
   width: 98%;
   height: auto;
-  display: inline-block
+  display: inline-block;
+  box-shadow: 2px 2px 2px #888888;
+  padding: 5px;
+  margin: 4px;
 
 }
-#update-pothole-button{
-  width: 98%;
-}
-.filter-button{
+button{
   width: 92%;
+  box-shadow: 1px 1px 2px #888888;
 }
 
+button:hover{
+  background-color:rgb(208, 233, 250);
+}
 
-#status, #severity, #update-status, #update-severity {
+button:active{
+  background-color: rgb(128, 198, 245);
+}
+
+#severity{
+  width: 30%;
+}
+#status{
   width: 30%;
 }
 .input-field{
