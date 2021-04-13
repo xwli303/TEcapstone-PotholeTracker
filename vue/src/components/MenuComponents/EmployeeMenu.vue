@@ -110,7 +110,7 @@ export default {
         showFilterForm: true,
         databaseUpdated: false,
         dbTextUpdate:'',
-        isLoading: true
+        
       };
         
     },
@@ -143,7 +143,7 @@ export default {
         pothole.id == potholeId);
         this.updatedPothole = returnedPothole;
         this.showFilterForm = false;
-        this.isLoading = false;
+      
       },
       submitUpdatedPothole(pothole){
         pothole.severity = parseInt(pothole.severity);
@@ -157,7 +157,7 @@ export default {
             db = !db;
             text = "Pothole Updated!";
             console.log(text);
-            // location.reload();
+          
           }
         })
         .catch(error => {

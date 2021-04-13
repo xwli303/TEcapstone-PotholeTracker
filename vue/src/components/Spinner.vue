@@ -11,11 +11,10 @@ export default {
 <style>
 .spinner{
     display: inline-block;
-    position: fixed;
-    width:30%;
+    /* position: fixed; */
+    width:25%;
     height: auto;
-    top:22%;
-    left: 35%;
+    
     z-index: 100;
  
 }

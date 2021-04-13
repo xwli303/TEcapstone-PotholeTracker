@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <spinner v-if="showLoading"> </spinner>
+    <div id="spinner-div" v-if="isLoading">
+      <spinner > </spinner>
+    </div>
     <div id="flexbox" v-if="$store.state.token != ''">
       <div id="icon">
         <img class = "image" src="@/assets/blacklogo.jpg" alt = "logo">
@@ -19,16 +21,16 @@
 
 <script>
 import Spinner from "@/components/Spinner.vue";
-import {mapState} from 'vuex'
+// import {mapState} from 'vuex'
 export default{
   components: {
      Spinner 
   },
-  computed: {
-    ...mapState({
-      showLoading: state => state.isLoading
-    })
-  }  
+  data(){
+    return {
+      isLoading: false
+    }
+  }
 };
 </script>
 
@@ -70,6 +72,15 @@ margin-top: 50px;
 color: grey;
 text-decoration: none;
 }
+
+#spinner-div{
+  height: 900px;
+  width:auto;
+  background-color: white;
+  z-index: 999;
+  position:relative;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
 #title{
   font-family: "Kanit", Helvetica, sans-serif;

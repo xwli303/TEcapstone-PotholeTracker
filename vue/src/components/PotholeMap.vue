@@ -1,5 +1,16 @@
 <template>
     <div>
+        
+        <div id="overlay" v-if="isLoading">
+            <div id="text">
+                <p >Loading...</p>
+            </div>
+            <div id=#loader>
+                <spinner> </spinner>
+            </div>
+            
+            
+        </div>
         <div id="map" ref="map">
             <map-marker v-for="pothole in $store.state.potholes" 
                 v-bind:key="pothole.id"
@@ -16,8 +27,9 @@
 import PotholeService from "../services/PotholeService";
 import { Loader } from "@googlemaps/js-api-loader";
 import MapMarker from './MapMarker.vue';
+import Spinner from "@/components/Spinner";
 export default {
-  components: { MapMarker },
+  components: { MapMarker, Spinner},
     data() {
         return {
             map: null,
@@ -32,11 +44,13 @@ export default {
                 visible: true
             },
            
-            // isLoading: true
+            isLoading: true,
+            
         }
     },
     name: "PotholeMap",
     mounted() {
+        this.wait();
         const loader = new Loader({
             apiKey: "AIzaSyDRcIpT0bxsU80JISszJUMH2uyxYpZ2I-w",
             version: "weekly"
@@ -116,6 +130,15 @@ export default {
               dateString =  year + "-" + month + "-" + day;   
             }
             return dateString;
+        },
+
+        hideLoader(){
+            this.isLoading = false;
+        },
+        
+        wait(){
+            setTimeout(this.hideLoader, 2000);
+            
         }
     }
 }
@@ -129,4 +152,31 @@ export default {
     margin-top:10px;
     
 }
+
+#overlay{
+    position: absolute;
+    top:0;
+    left: 0;
+    width:100%;
+    height:120%;
+    z-index: 99;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content:
+ 
+}
+
+#loader{
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+
+}
+
+#text{
+    position: relative;
+}
+
 </style>
