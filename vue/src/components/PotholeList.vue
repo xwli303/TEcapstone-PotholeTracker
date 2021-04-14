@@ -48,8 +48,5 @@ export default {
       font-family: Helvetica, sans-serif;
       font-size: 20px;
 }
-button{
-    width: 90%;
-}
 
 </style>
