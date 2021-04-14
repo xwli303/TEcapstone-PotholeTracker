@@ -25,8 +25,9 @@
           v-bind:key="pothole.id"
           v-show="pothole.visible === true"
           @click="showPopulatedPotholeForm(pothole.id)" >
-          ID: {{ pothole.id }} | Address: {{ pothole.address }}
+           {{ pothole.id }} | {{ pothole.address }}    
         </button>
+        <!--DLA-->
       </ul>
     </div>
     

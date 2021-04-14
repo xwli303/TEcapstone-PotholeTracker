@@ -62,21 +62,20 @@ export default {
             const infoWindow = new window.google.maps.InfoWindow({
                 content: "<h2 style=\"color:blue\";>mobileReport</h2>"
                 });
+            //let tempPothole = this.pothole;
             this.map.addListener("rightclick",(mapsMouseEvent) => {
 				console.log(mapsMouseEvent.latLng.lat());
                 infoWindow.setPosition(mapsMouseEvent.latLng);
                 infoWindow.open(this.map);
-                {
-                    //let geocoder = new window.google.maps.Geocoder();
-                                this.pothole.address ="Mobile Report"; 
-
-                              //  geocoder.geocode( {"address": mapsMouseEvent.latLng.toJSON()}, (results) =>{
-                              //      console.log(results[0])
-                              //  }) ;
-
+             //   {
+                       
                                 this.pothole.latitude = mapsMouseEvent.latLng.lat();
                                 this.pothole.longitude = mapsMouseEvent.latLng.lng();
                                 this.pothole.dateReported = this.makeDate();
+                                this.pothole.address="mobile report";
+                               // this.makeAddress(mapsMouseEvent)
+                               // .then(this.pothole.address = this.newAddress;
+                                
 
                                 PotholeService
                                     .reportPothole(this.pothole)
@@ -89,13 +88,15 @@ export default {
                                     .catch(error => {
                                         window.alert("Error: " + error.message);
                                     });
-                            }
+                                
+                               
+                       //     }
 
 
-
+            
 
             });    // end of rightclick
-
+            
 
 
         })
@@ -135,7 +136,24 @@ export default {
         
         wait(){
             setTimeout(this.hideLoader, 2000);
-            
+        },
+        makeAddress(mapsMouseEvent){
+            const newStringMaker = this.copyString;
+            let geocoder = new window.google.maps.Geocoder(); 
+                    geocoder.geocode( {location: mapsMouseEvent.latLng}, (results) =>{
+                                console.log(results[0]);
+                                const placeString = results[0].address_components[0].long_name + " " +
+                                results[0].address_components[1].long_name;
+                                console.log("inside: "  + placeString);
+                                newStringMaker(placeString);
+                                
+                                
+                            });   // end geocode 
+                            
+        },
+        copyString(string){
+            this.newAddress = string;
+            console.log("xxxx");
         }
     }
 }
