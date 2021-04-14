@@ -40,7 +40,7 @@ export default {
         "add-pothole";
     overflow: scroll;
     z-index: 1;
-     margin-top:120px;
+    margin-top:120px;
     
 }
 .add-pothole {

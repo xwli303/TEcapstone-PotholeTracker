@@ -152,10 +152,11 @@ export default {
 
 #overlay{
     position: absolute;
+    margin-top:110px;
     top:0;
     left: 0;
     width:100%;
-    height:120%;
+    height:100%;
     z-index: 99;
     background-color: white;
     display: flex;

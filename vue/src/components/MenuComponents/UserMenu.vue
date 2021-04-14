@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="form">
     <new-pothole-form />
   </div>
 </template>

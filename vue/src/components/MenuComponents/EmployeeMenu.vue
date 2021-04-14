@@ -1,6 +1,5 @@
 <template>
   <div class="employee-menu-container">
-    
     <form id="filter-form" v-on:submit.prevent v-show="showFilterForm == true">
       <p id="filter-potholes"><strong>Filter Potholes by:</strong></p>
       <label for="status"> Status </label>
@@ -62,7 +61,7 @@
         <label for="date-repaired"> Date Repaired </label>
         <input type="text" id="date-repaired" class="input-field" v-model="pothole.dateRepaired"/>
       </div>
-      <button class="submit">Update Pothole</button>
+      <button id="update" class="submit">Update Pothole</button>
       <button >Return to All Potholes</button>
     </form>
     <button v-show="databaseUpdated" @click="databaseUpdated=false">{{dbTextUpdate}}</button>
@@ -119,8 +118,6 @@ export default {
         const tempStatus = this.statusFilter;
         const tempSeverity = this.severityFilter;
 
-        this.$store.commit('SHOW_SPINNER', true);
-
         // Below creates a new, seperate array of potholes
         const potholesToReturn = JSON.parse(JSON.stringify(this.$store.state.potholes));
 
@@ -136,7 +133,6 @@ export default {
         for (let i = 0; i < potholesToReturn.length; i++) {
           this.$store.commit('ADD_POTHOLE', potholesToReturn[i]);
         }
-        this.$store.commit('SHOW_SPINNER', false);
       },
       showPopulatedPotholeForm(potholeId){
         const returnedPothole = this.$store.state.potholes.filter(pothole => 
@@ -185,6 +181,7 @@ div {
 
 .employee-menu-container{
   padding-right: 15px;
+
 }
 
 #employee-buttons-list{
@@ -203,7 +200,8 @@ div {
 }
 button{
   width: 92%;
-  box-shadow: 1px 1px 2px #888888;
+  box-shadow: 1px 1px 5px #888888;
+  background-color:rgb(208, 208, 208)
 }
 
 button:hover{
@@ -228,4 +226,23 @@ p {
     border: solid black 3px;
     width: 93%;
 }
+#filter{
+    background-color: #00a2ed;
+
+}
+
+#filter:active{
+  background-color: rgb(128, 198, 245);
+} 
+#update{
+   background-color: #00a2ed;
+}
+#update:active{
+  background-color: rgb(128, 198, 245);
+}
+label{
+  padding-right: 10px;
+}
+
+
 </style>
