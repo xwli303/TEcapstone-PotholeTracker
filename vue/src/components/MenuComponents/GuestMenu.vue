@@ -22,12 +22,23 @@
         <br>
       </div>
       <p>• To report a pothole, please create an account and log in. <br><br> Our team will address the potholes as soon as we can.</p>
+      <button @click="showList = !showList">
+        {{showList == false ? 'Show Pothole Status Tracker' : 'Hide Pothole Status Tracker'}}
+      </button>
+      <pothole-list v-show="showList == true" />
   </div>
 </template>
 
 <script>
+import PotholeList from '../PotholeList.vue'
 export default {
-    name: 'guest-menu'
+  components: { PotholeList },
+  name: 'guest-menu',
+  data() {
+    return {
+      showList: false
+    }
+  }
 }
 </script>
 
