@@ -67,34 +67,23 @@ export default {
 				console.log(mapsMouseEvent.latLng.lat());
                 infoWindow.setPosition(mapsMouseEvent.latLng);
                 infoWindow.open(this.map);
-             //   {
-                       
-                                this.pothole.latitude = mapsMouseEvent.latLng.lat();
-                                this.pothole.longitude = mapsMouseEvent.latLng.lng();
-                                this.pothole.dateReported = this.makeDate();
-                                this.pothole.address="mobile report";
-                               // this.makeAddress(mapsMouseEvent)
-                               // .then(this.pothole.address = this.newAddress;
-                                
-
-                                PotholeService
-                                    .reportPothole(this.pothole)
-                                    .then(response => {
-                                        if(response.status === 201 || response.status === 200) {
-                                         //addToStore();
-                                           console.log("success");
-                                        }
-                                    })
-                                    .catch(error => {
-                                        window.alert("Error: " + error.message);
-                                    });
-                                
-                               
-                       //     }
-
-
-            
-
+                this.pothole.latitude = mapsMouseEvent.latLng.lat();
+                this.pothole.longitude = mapsMouseEvent.latLng.lng();
+                this.pothole.dateReported = this.makeDate();
+                this.pothole.address="mobile report";
+                // this.makeAddress(mapsMouseEvent)
+                // .then(this.pothole.address = this.newAddress;
+                PotholeService
+                    .reportPothole(this.pothole)
+                    .then(response => {
+                        if(response.status === 201 || response.status === 200) {
+                            //addToStore();
+                            console.log("success");
+                        }
+                    })
+                    .catch(error => {
+                        window.alert("Error: " + error.message);
+                    });
             });    // end of rightclick
             
 
