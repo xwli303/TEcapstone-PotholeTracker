@@ -8,6 +8,9 @@
                 <spinner> </spinner>
             </div>
         </div>
+        <div v-if="mobile" id="mobile-instructions">
+            <p>Tap on the screen to report a new pothole!</p>
+        </div>
         <div id="map" ref="map">
             <map-marker v-for="pothole in $store.state.potholes" 
                 v-bind:key="pothole.id"
@@ -40,12 +43,16 @@ export default {
                 dateReported: null,
                 visible: true
             },
-           
             isLoading: true,
             
         }
     },
     name: "PotholeMap",
+    computed: {
+        mobile() {
+            return (screen.width <= 600);
+        } 
+    },
     mounted() {
         this.wait();
         const loader = new Loader({
@@ -183,6 +190,9 @@ export default {
 #text{
     position: relative;
 }
+#mobile-instructions {
+    visibility: hidden;
+}
 
 @media only screen and (max-width: 600px) {
     #map-container{
@@ -192,7 +202,12 @@ export default {
     #map {
         margin-left: 0;
         width: 100%;
-        
+    }
+    #mobile-instructions {
+        visibility: visible;
+        display: flex;
+        justify-content: center;
+        background-color: white;
     }
 }
 </style>
