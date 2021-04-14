@@ -1,6 +1,5 @@
 <template>
-    <div>
-        
+    <div id="map-container">
         <div id="overlay" v-if="isLoading">
             <div id="text">
                 <p >Loading...</p>
@@ -8,8 +7,6 @@
             <div id=#loader>
                 <spinner> </spinner>
             </div>
-            
-            
         </div>
         <div id="map" ref="map">
             <map-marker v-for="pothole in $store.state.potholes" 
@@ -149,7 +146,7 @@ export default {
     height: 100vh;
     width: auto;
     margin-left: 10px;
-    margin-top:10px;
+    margin-top:0px;
     
 }
 
@@ -180,10 +177,14 @@ export default {
 }
 
 @media only screen and (max-width: 600px) {
+    #map-container{
+        width:100%;
+        height: 100%;
+    }
     #map {
         margin-left: 0;
         width: 100%;
-        height: 500px;
+        
     }
 }
 </style>

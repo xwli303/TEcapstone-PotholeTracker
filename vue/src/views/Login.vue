@@ -1,4 +1,5 @@
 <template>
+<div>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
       <img class = "login-image" src="@/assets/blacklogo.png" alt = "logo">
@@ -41,6 +42,7 @@
       <router-link id = "link" :to="{ name: 'register' }">Need an account?</router-link>
     </form>
   </div>
+</div>
 </template>
 
 <script>

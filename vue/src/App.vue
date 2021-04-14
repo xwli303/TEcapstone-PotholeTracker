@@ -39,12 +39,14 @@ export default{
     justify-content: space-between;
     padding-top: 10px;
     padding-right: 10px;
+    padding-bottom: 5px;
     margin: 0 auto;
     padding-inline-start: 10px;
     z-index: 5;
     height: 100px;
     background-color: white;
     align-items: center;
+    border-bottom: solid 5px rgb(230, 226, 228);
   }
   #nav {
     display: flex;
@@ -69,6 +71,7 @@ margin-top: 50px;
 #icon{
   display: flex;
   align-items: center;
+  padding-left: 8px;
 }
 
 .image{
@@ -81,13 +84,10 @@ color: grey;
 text-decoration: none;
 }
 
-#spinner-div{
-  height: 900px;
-  width:auto;
-  background-color: white;
-  z-index: 999;
-  position:relative;
+.top:active{
+  color:rgb(92, 91, 91);
 }
+
 
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
 #title{
@@ -100,6 +100,7 @@ text-decoration: none;
   #app {
     display: flex;
     flex-direction: column;
+    
 
   }
   #flexbox {
@@ -129,6 +130,8 @@ text-decoration: none;
     margin-left: 5px;
     margin-right: 5px;
   }
+
+  
 
 }
 </style>

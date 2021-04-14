@@ -71,6 +71,7 @@ export default {
 }
 
 @media only screen and (max-width: 600px) {
+  
   .side-container {
     display: none;
   }

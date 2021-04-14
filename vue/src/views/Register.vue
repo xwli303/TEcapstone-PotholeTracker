@@ -1,4 +1,5 @@
 <template>
+<div>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
@@ -44,6 +45,7 @@
       <router-link id = "link" :to="{ name: 'login' }">Have an account?</router-link>
     </form>
   </div>
+</div>
 </template>
 
 <script>
