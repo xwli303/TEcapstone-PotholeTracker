@@ -35,6 +35,7 @@ import PotholeService from "../services/PotholeService";
 				"<body>" + 
 				"<div >" ;
 				if (role === "ROLE_EMPLOYEE") {
+				infoString = infoString +
 				"<h2 style=\"color:blue\";>Pothole ID: " + `${this.dent.id}` + "</h2>" ;
 				}
 				infoString = infoString +

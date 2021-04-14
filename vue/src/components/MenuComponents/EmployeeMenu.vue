@@ -63,7 +63,7 @@
         <input type="text" id="date-repaired" class="input-field" v-model="pothole.dateRepaired"/>
       </div>
       <button id="update" class="submit">Update Pothole</button>
-      <button >Return to All Potholes</button>
+      <button @click="resetFilters">Return to All Potholes</button>
     </form>
     <button v-show="databaseUpdated" @click="databaseUpdated=false">{{dbTextUpdate}}</button>
     
@@ -167,8 +167,12 @@ export default {
       },
       showAllPotholes(){
         return this.$store.state.potholes;
+      },
+      resetFilters() {
+        this.statusFilter = '';
+        this.severityFilter = '';
+        this.showFilterForm = true;
       }
-
     }
 
 }
