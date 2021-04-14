@@ -62,37 +62,90 @@ export default {
         loader.load().then(() => {
             this.map = new window.google.maps.Map(document.getElementById("map"), {
                 center: { lat: 39.9528, lng: -75.1635 },
-                zoom: 13
+                zoom: 13,
+                mapTypeControl: false,
+                fullscreenControl: false,
             });
 
-            // added rightclick event to map
-            const infoWindow = new window.google.maps.InfoWindow({
-                content: "<h2 style=\"color:blue\";>mobileReport</h2>"
-                });
-            //let tempPothole = this.pothole;
-            this.map.addListener("rightclick",(mapsMouseEvent) => {
+//************** */
+let report = false;
+function CenterControl(controlDiv) {
+  // Set CSS for the control border.
+  const controlUI = document.createElement("div");
+  controlUI.style.backgroundColor = "#fff";
+  controlUI.style.border = "2px solid #fff";
+  controlUI.style.borderRadius = "3px";
+  controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+  controlUI.style.cursor = "pointer";
+  controlUI.style.marginTop = "8px";
+  controlUI.style.marginBottom = "22px";
+  controlUI.style.textAlign = "center";
+  controlUI.title = "Click to Report Pothole";
+  controlDiv.appendChild(controlUI);
+  // Set CSS for the control interior.
+  const controlText = document.createElement("div");
+  controlText.style.color = "red";
+  controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+  controlText.style.fontSize = "18px";
+  controlText.style.lineHeight = "38px";
+  controlText.style.paddingLeft = "5px";
+  controlText.style.paddingRight = "5px";
+  controlText.innerHTML = "Report Pothole";
+  controlUI.appendChild(controlText);
+  // Setup the click event listeners: simply set the map to Chicago.
+  controlUI.addEventListener("click", () => {
+    report = true;
+    console.log("REPORT");
+
+  });
+}
+if(screen.width <= 600){
+ const centerControlDiv = document.createElement("div");
+  CenterControl(centerControlDiv);
+  this.map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+}
+
+
+        if(screen.width <= 600){
+           
+            let addToStore = this.updateStore;
+           // let insideReport = this.report;
+            this.map.addListener("click",(mapsMouseEvent) => {
+                if (report && (window.confirm("Are you sure want to Report this Pothole?"))){
+                
+                report = false;
 				console.log(mapsMouseEvent.latLng.lat());
-                infoWindow.setPosition(mapsMouseEvent.latLng);
-                infoWindow.open(this.map);
-                this.pothole.latitude = mapsMouseEvent.latLng.lat();
-                this.pothole.longitude = mapsMouseEvent.latLng.lng();
-                this.pothole.dateReported = this.makeDate();
-                this.pothole.address="mobile report";
-                // this.makeAddress(mapsMouseEvent)
-                // .then(this.pothole.address = this.newAddress;
-                PotholeService
-                    .reportPothole(this.pothole)
-                    .then(response => {
-                        if(response.status === 201 || response.status === 200) {
-                            //addToStore();
-                            console.log("success");
-                        }
-                    })
-                    .catch(error => {
-                        window.alert("Error: " + error.message);
-                    });
-            });    // end of rightclick
+                console.log(screen.width);
+
+                       
+                                this.pothole.latitude = mapsMouseEvent.latLng.lat();
+                                this.pothole.longitude = mapsMouseEvent.latLng.lng();
+                                this.pothole.dateReported = this.makeDate();
+                                this.pothole.address="mobile report";
+                               // this.makeAddress(mapsMouseEvent)
+                               // .then(this.pothole.address = this.newAddress;
+                                
+
+                                PotholeService
+                                    .reportPothole(this.pothole)
+                                    .then(response => {
+                                        if(response.status === 201 || response.status === 200) {
+                                           addToStore();
+                                           console.log("success");
+                                        }
+                                    })
+                                    .catch(error => {
+                                        window.alert("Error: " + error.message);
+                                    });
+                                
+                               
+    
+
+
             
+            }      // are yo u sure?
+            });    // end of rightclick
+        } //if screen width <= 600 
 
 
         })
@@ -132,6 +185,10 @@ export default {
         
         wait(){
             setTimeout(this.hideLoader, 2000);
+        },
+         updateStore() {
+            this.$store.commit('ADD_POTHOLE', this.pothole);
+            this.showConfirmForm = !this.showConfirmForm;
         },
         makeAddress(mapsMouseEvent){
             const newStringMaker = this.copyString;
