@@ -75,7 +75,7 @@ text-decoration: none;
 }
 
 #app{
-  background-color: rgb(242, 242, 242)
+  background-color: rgb(242, 242, 242);
 }
 
 

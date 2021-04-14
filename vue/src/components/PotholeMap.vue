@@ -198,16 +198,20 @@ export default {
     #map-container{
         width:100%;
         height: 100%;
+        overflow: hidden;
     }
     #map {
         margin-left: 0;
         width: 100%;
+        height: 75vh;
+        height: calc(var(--vh, 1vh) *76);
     }
     #mobile-instructions {
         visibility: visible;
         display: flex;
         justify-content: center;
         background-color: white;
+        height: 8vh;     
     }
 }
 </style>

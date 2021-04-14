@@ -68,6 +68,7 @@ export default {
 }
 .pothole-map {
   grid-area: pothole-map;
+  
 }
 
 @media only screen and (max-width: 600px) {

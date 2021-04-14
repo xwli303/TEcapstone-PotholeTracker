@@ -41,6 +41,7 @@ export default {
     overflow: scroll;
     z-index: 1;
     margin-top:120px;
+    height:100vh;
     
 }
 .add-pothole {
