@@ -158,6 +158,7 @@ export default {
         let text = this.dbTextUpdate;
         PotholeService.updatePothole(pothole).then((response) =>{ 
           if(response.status == 200){
+            location.reload();
             filter = !filter;
             db = !db;
             text = "Pothole Updated!";
