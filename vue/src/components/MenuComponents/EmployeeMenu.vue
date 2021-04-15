@@ -62,10 +62,10 @@
           </option>
         </select>
         <br>
-        <label for="date-inspected"> Date Inspected </label>
+        <label for="date-inspected"> Date Inspected (YYYY-MM-DD)</label>
         <input  type="text" id="date-inspected" class="input-field" v-model="pothole.dateInspected"/>
         <br>
-        <label for="date-repaired"> Date Repaired </label>
+        <label for="date-repaired"> Date Repaired (YYYY-MM-DD)</label>
         <input type="text" id="date-repaired" class="input-field" v-model="pothole.dateRepaired"/>
       </div>
       <button id="update" class="submit">Update Pothole</button>
@@ -255,6 +255,9 @@ p {
 }
 label{
   padding-right: 10px;
+}
+#update-severity{
+  margin-bottom: 15px;
 }
 
 
