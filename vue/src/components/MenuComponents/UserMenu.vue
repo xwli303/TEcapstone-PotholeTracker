@@ -1,11 +1,11 @@
 <template>
   <div id="form">
     <new-pothole-form v-show="showReportPothole" />
-    <p v-show="showReportPothole">Click below to see a list of all potholes and their current status</p>
+    <p v-show="showReportPothole">Click below to see a list of all potholes and their current status.</p>
     <button class="user-menu-button" @click="swapReportAndList" v-show="showFileDamageClaim == false">
       {{showPotholeList == false ? 'Show Pothole Status Tracker' : 'Return to Pothole Reporting'}}
     </button>
-    <p v-show="showReportPothole">Click below to open a form to submit a pothole-related damage claim</p>
+    <p v-show="showReportPothole">Click below to open a form to submit a pothole-related damage claim.</p>
     <button class="user-menu-button" @click="swapReportAndClaim" v-show="showPotholeList == false">
       {{showFileDamageClaim == false ? 'Show Damage Claim Form' : 'Return to Pothole Reporting'}}
     </button>
@@ -75,11 +75,8 @@ input{
   border: solid rgb(148, 145, 145) 1px;
 }
 #submit-btn{
-  font-weight: bold;
   background-color: #00A4EF;
 }
-.user-menu-button{
-  font-weight: bold;
-}
+
 
 </style>

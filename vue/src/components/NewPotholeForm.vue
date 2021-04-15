@@ -1,7 +1,7 @@
 <template>
   <div class="report-pothole">
-     <p id="welcome">Welcome! <br><br> Thank you for your interest in improving our city.<br> <br>• To see currently reported potholes, please see the map.<br> <br>• Pothole severity is as follows: </p>
-      <div id="green-marker">
+     <p id="welcome"><strong><em>Welcome!</em></strong> <br><br> Thank you for your interest in improving our city.<br> <br>• To see currently reported potholes, please see the map.<br> <br>• Pothole severity is as follows: </p>
+      <div id="green-marker" class="top-marker">
         <img class = "marker" src="@/assets/1.png" alt = "logo">
         <p> Least Severe (1)</p>
         <br>
@@ -16,7 +16,7 @@
         <p> High Severity (3)</p>
         <br>
       </div>
-     <div id="red-marker">
+     <div id="red-marker" class="bottom-marker">
         <img id="red-marker-image" class = "marker" src="@/assets/4.png" alt = "logo"> 
         <p>  Maximum Severity (4 - 5)</p>
         <br>
@@ -151,7 +151,7 @@ p{
     width: 91%;
 }
 #welcome{
-    width: 94%
+    width: 94%;
 }
 
 #inputfield{
@@ -166,6 +166,12 @@ p{
 #red-marker-image{
     padding-right: 4px;
     padding-left: 5px;
+}
+.top-marker{
+    border-top: 3px solid black;
+}
+.bottom-marker{
+    border-bottom: 3px solid black;
 }
 
 </style>
