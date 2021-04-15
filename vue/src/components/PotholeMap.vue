@@ -117,7 +117,7 @@ export default {
                         this.pothole.latitude = mapsMouseEvent.latLng.lat();
                         this.pothole.longitude = mapsMouseEvent.latLng.lng();
                         this.pothole.dateReported = this.makeDate();
-                        this.pothole.address="mobile report";
+                        this.pothole.address="MOBILE REPORT";
                         PotholeService
                             .reportPothole(this.pothole)
                             .then(response => {
