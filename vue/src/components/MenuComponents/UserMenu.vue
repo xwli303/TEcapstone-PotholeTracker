@@ -12,17 +12,17 @@
     <pothole-list v-show="showPotholeList" />
     <form id="damage-claim-form" @submit.prevent="submitClaim" v-show="showFileDamageClaim">
       <h2>Submit a damage claim to the city of Philadelphia:</h2>
-      <label for="name">Name: </label><br />
+      <label for="name" class="label-class"> <b> Name: </b> </label><br />
       <input type="text" name="name" /><br />
-      <label for="address">Address: </label><br />
+      <label for="address" class="label-class"> <b> Address: </b></label><br />
       <input type="text" name="address" placeholder="123 Market Street, Philadelphia, PA" /><br />
-      <label for="phone">Phone: </label><br />
+      <label for="phone" class="label-class"> <b>Phone: </b> </label><br />
       <input type="tel" name="phone" placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required /><br />
-      <label for="date">Date of Incident: </label><br />
+      <label for="date" class="label-class"> <b>Date of Incident: </b></label><br />
       <input type="date" name="date" /><br />
-      <label for="details">Details: </label><br />
+      <label for="details" class="label-class"> <b>Details: </b> </label><br />
       <textarea name="details" rows="10" cols="40" />
-      <button type="submit">Submit Claim</button>
+      <button id="submit-btn" type="submit">Submit Claim</button>
     </form>
   </div>
 </template>
@@ -61,11 +61,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .user-menu-button {
   width: 90%;
 }
 input {
   width: 90%;
 }
+label{
+  font-weight: 500;
+}
+input{
+  border: solid rgb(148, 145, 145) 1px;
+}
+#submit-btn{
+  font-weight: bold;
+  background-color: #00A4EF;
+}
+.user-menu-button{
+  font-weight: bold;
+}
+
 </style>
