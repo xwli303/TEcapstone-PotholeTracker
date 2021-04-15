@@ -60,7 +60,7 @@ export default {
   grid-area: side-menu;
   width: 20%;
   right: 0;
-  height: 100%;
+  height: 87.6vh;
   position: absolute;
   /* z-index: 1; */
   left: 0;

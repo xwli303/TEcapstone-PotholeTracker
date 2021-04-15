@@ -114,7 +114,7 @@ export default {
     margin-bottom: 0;
   }
   .form-signin{
-    background-color: rgba(194, 190, 190, 0.808);
+    background-color: rgba(194, 190, 190, 0.55);
     position: left;
     top:50%;
     left: 50%;

@@ -107,10 +107,11 @@ import PotholeService from "../services/PotholeService";
 				const infowindow = new window.google.maps.InfoWindow({
                 content: infoString,
                 });
+			//	if(window.width>600){
 				this.marker.addListener("click", () => {
 					infowindow.open(this.map, this.marker);
 				});
-				
+			//	}
 				if (role === "ROLE_EMPLOYEE") {
 					this.marker.addListener("rightclick", () => {
 						if (window.confirm("Are you sure you want to delete this pothole?")) {

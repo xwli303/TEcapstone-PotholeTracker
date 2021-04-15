@@ -36,7 +36,8 @@
   }
   #nav {
     display: flex;
-    /* justify-content: space-evenly; */
+    /* justify-content: space-between;
+    align-items: center; */
   }
 
 .top {
@@ -46,7 +47,7 @@ font-weight: bold;
 color:black;
 text-decoration: none;
 vertical-align: middle;
-margin-top: 50%;
+margin-top: 20%;
 }
 
   p.top {
@@ -113,6 +114,7 @@ text-decoration: none;
 
   .top {
     font-size: 20px;
+    margin-top: 0;
   }
 
   p.top {
