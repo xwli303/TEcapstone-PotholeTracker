@@ -76,6 +76,7 @@ input{
 }
 #submit-btn{
   background-color: #00A4EF;
+  width: 91%;
 }
 
 

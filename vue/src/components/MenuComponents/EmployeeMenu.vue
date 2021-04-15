@@ -69,7 +69,7 @@
         <input type="text" id="date-repaired" class="input-field" v-model="pothole.dateRepaired"/>
       </div>
       <button id="update" class="submit">Update Pothole</button>
-      <button @click="resetFilters">Return to All Potholes</button>
+      <button id="return-button" @click="resetFilters">Return to All Potholes</button>
     </form>
     <button v-show="databaseUpdated" @click="databaseUpdated=false">{{dbTextUpdate}}</button>
     
@@ -236,12 +236,12 @@ p {
   width: 30%;
 }
 .input-field{
-    border: solid black 3px;
-    width: 93%;
+  border: solid black 3px;
+  width: 93%;
 }
 #filter{
-    background-color: #00a2ed;
-
+  background-color: #00a2ed;
+  width: 93%;
 }
 
 #filter:active{
@@ -249,6 +249,7 @@ p {
 } 
 #update{
    background-color: #00a2ed;
+   width: 97%;
 }
 #update:active{
   background-color: rgb(128, 198, 245);
@@ -260,5 +261,7 @@ label{
   margin-bottom: 15px;
 }
 
-
+#return-button{
+  width: 97%;
+}
 </style>

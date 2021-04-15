@@ -168,10 +168,10 @@ p{
     padding-left: 5px;
 }
 .top-marker{
-    border-top: 3px solid black;
+    border-top: 3px solid rgb(208, 208, 208);
 }
 .bottom-marker{
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid rgb(208, 208, 208);
 }
 
 </style>

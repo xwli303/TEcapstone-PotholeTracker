@@ -22,7 +22,7 @@
         <br>
       </div>
       <p>• To report a pothole, please create an account and log in. <br><br> Our team will address the potholes as soon as we can.</p>
-      <button @click="showList = !showList">
+      <button id="show-status" @click="showList = !showList">
         {{showList == false ? 'Show Pothole Status Tracker' : 'Hide Pothole Status Tracker'}}
       </button>
       <pothole-list v-show="showList == true" />
@@ -57,5 +57,8 @@ p{
 #red-marker-image{
     padding-right: 4px;
     padding-left: 5px;
+}
+#show-status{
+  width: 91%;
 }
 </style>
