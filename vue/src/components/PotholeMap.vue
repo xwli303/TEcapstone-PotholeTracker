@@ -214,10 +214,10 @@ if(screen.width <= 600){
 
 <style>
 #map {
-    height: 100vh;
+    height: 87.6vh;
     width: auto;
     margin-left: 10px;
-    margin-top:0px;
+    margin-top: 0px;
     
 }
 
