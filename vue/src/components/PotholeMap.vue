@@ -158,7 +158,9 @@ if(screen.width <= 600){
                 
                 //window.google.maps.IconMouseEvent.placeId.stop();
                 
-                if (report && window.confirm("Are you sure you want to delete this pothole?")){
+                // if (report && window.confirm("Are you sure you want to delete this pothole?")){
+                if (report){
+
                 //this.map.controls[window.google.maps.ControlPosition.BOTTOM_CENTER].pop(confirmControlDiv);
                 report = false;
 				console.log(mapsMouseEvent.latLng.lat());
