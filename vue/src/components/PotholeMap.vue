@@ -28,8 +28,13 @@ import PotholeService from "../services/PotholeService";
 import { Loader } from "@googlemaps/js-api-loader";
 import MapMarker from './MapMarker.vue';
 import Spinner from "@/components/Spinner";
+
 export default {
-  components: { MapMarker, Spinner},
+    name: "PotholeMap",
+    components: { 
+        MapMarker, 
+        Spinner
+    },
     data() {
         return {
             map: null,
@@ -47,7 +52,6 @@ export default {
             
         }
     },
-    name: "PotholeMap",
     computed: {
         mobile() {
             return (screen.width <= 600);
@@ -66,141 +70,68 @@ export default {
                 mapTypeControl: false,
                 fullscreenControl: false,
             });
+            let report = false;
+            function CenterControl(controlDiv) {
 
-//************** */
-let report = false;
-
-function CenterControl(controlDiv) {
-  // Set CSS for the control border.
-  const controlUI = document.createElement("div");
-  controlUI.style.backgroundColor = "#fff";
-  controlUI.style.border = "2px solid #000";
-  controlUI.style.borderRadius = "5px";
-  controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
-  controlUI.style.cursor = "pointer";
-  controlUI.style.marginTop = "8px";
-  controlUI.style.marginBottom = "22px";
-  controlUI.style.textAlign = "center";
-  controlUI.title = "Click to Report Pothole";
-  controlDiv.appendChild(controlUI);
-  // Set CSS for the control interior.
-  const controlText = document.createElement("div");
-  controlText.style.color = "red";
-  controlText.style.fontFamily = "Roboto,Arial,sans-serif";
-  controlText.style.fontSize = "20px";
-  controlText.style.fontWeight = "bold"
-  controlText.style.lineHeight = "38px";
-  controlText.style.paddingLeft = "5px";
-  controlText.style.paddingRight = "5px";
-  controlText.innerHTML = "Report Pothole";
-  controlUI.appendChild(controlText);
-  // Setup the click event listeners: simply set the map to Chicago.
-  controlUI.addEventListener("click", () => {
-    report = true;
-    console.log("REPORT");
-
-  });
- 
-}
-
-//let confirmation = false;
-/*
-function ConfirmControl(confirmDiv) {
-  // Set CSS for the control border.
-  const confirmUI = document.createElement("div");
-  //confirmUI.style.visibility = "hidden";
-  confirmUI.style.backgroundColor = "#fff";
-  confirmUI.style.border = "2px solid #000";
-  confirmUI.style.borderRadius = "5px";
-  confirmUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
-  confirmUI.style.cursor = "pointer";
-  confirmUI.style.marginTop = "8px";
-  confirmUI.style.marginBottom = "22px";
-  confirmUI.style.textAlign = "center";
-  confirmUI.title = "Click to Report Pothole";
-  confirmDiv.appendChild(confirmUI);
-  // Set CSS for the control interior.
-  const confirmText = document.createElement("div");
-  confirmText.style.color = "red";
-  confirmText.style.fontFamily = "Roboto,Arial,sans-serif";
-  confirmText.style.fontSize = "20px";
-  confirmText.style.fontWeight = "bold"
-  confirmText.style.lineHeight = "38px";
-  confirmText.style.paddingLeft = "5px";
-  confirmText.style.paddingRight = "5px";
-  confirmText.innerHTML = "Confirm";
-  confirmUI.appendChild(confirmText);
-  // Setup the click event listeners: simply set the map to Chicago.
-  confirmUI.addEventListener("click", () => {
-                //confirmation = false;
-                console.log("CONFIRM");
+                const controlUI = document.createElement("div");
+                controlUI.style.backgroundColor = "#fff";
+                controlUI.style.border = "2px solid #000";
+                controlUI.style.borderRadius = "5px";
+                controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+                controlUI.style.cursor = "pointer";
+                controlUI.style.marginTop = "8px";
+                controlUI.style.marginBottom = "22px";
+                controlUI.style.textAlign = "center";
+                controlUI.title = "Click to Report Pothole";
+                controlDiv.appendChild(controlUI);
+                
+                const controlText = document.createElement("div");
+                controlText.style.color = "red";
+                controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+                controlText.style.fontSize = "20px";
+                controlText.style.fontWeight = "bold"
+                controlText.style.lineHeight = "38px";
+                controlText.style.paddingLeft = "5px";
+                controlText.style.paddingRight = "5px";
+                controlText.innerHTML = "Report Pothole";
+                controlUI.appendChild(controlText);
+                
+                controlUI.addEventListener("click", () => {
+                    report = true;
+                    console.log("REPORT");
 
                 });
- 
-}
-*/
-if(screen.width <= 600){
-  const centerControlDiv = document.createElement("div");
-  CenterControl(centerControlDiv);
-  this.map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-
-
-
-  
-}
-
-
-        if(screen.width <= 600){
-           
-            let addToStore = this.updateStore;
-           // let insideReport = this.report;
-            this.map.addListener("click",(mapsMouseEvent) => {
-                
-                //window.google.maps.IconMouseEvent.placeId.stop();
-                
-                // if (report && window.confirm("Are you sure you want to delete this pothole?")){
-                if (report){
-
-                //this.map.controls[window.google.maps.ControlPosition.BOTTOM_CENTER].pop(confirmControlDiv);
-                report = false;
-				console.log(mapsMouseEvent.latLng.lat());
-                console.log(screen.width);
-
-                
-
-                       
-                                this.pothole.latitude = mapsMouseEvent.latLng.lat();
-                                this.pothole.longitude = mapsMouseEvent.latLng.lng();
-                                this.pothole.dateReported = this.makeDate();
-                                this.pothole.address="mobile report";
-                               // this.makeAddress(mapsMouseEvent)
-                               // .then(this.pothole.address = this.newAddress;
-                                
-
-                                PotholeService
-                                    .reportPothole(this.pothole)
-                                    .then(response => {
-                                        if(response.status === 201 || response.status === 200) {
-                                           addToStore();
-                                           console.log("success");
-                                        }
-                                    })
-                                    .catch(error => {
-                                        window.alert("Error: " + error.message);
-                                    });
-                                
-                               
-    
-
-
-            
-            }      // are yo u sure?
-            });    // end of rightclick
-        } //if screen width <= 600 
-
-
+            }
+            this.map.addListener("rightclick", (mapsMouseEvent) => {
+                let infoString = mapsMouseEvent.latLng.lat() + ", " + mapsMouseEvent.latLng.lng();
+                window.alert(infoString);
+            });
+            if(screen.width <= 600) {
+                const centerControlDiv = document.createElement("div");
+                CenterControl(centerControlDiv);
+                this.map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);            
+                let addToStore = this.updateStore;
+                this.map.addListener("click", (mapsMouseEvent) => {
+                    if (report) {
+                        report = false;
+                        this.pothole.latitude = mapsMouseEvent.latLng.lat();
+                        this.pothole.longitude = mapsMouseEvent.latLng.lng();
+                        this.pothole.dateReported = this.makeDate();
+                        this.pothole.address="mobile report";
+                        PotholeService
+                            .reportPothole(this.pothole)
+                            .then(response => {
+                                if(response.status === 201 || response.status === 200) {
+                                    addToStore();
+                                }
+                            })
+                            .catch(error => {
+                                window.alert("Error: " + error.message);
+                            });
+                    }      
+                });    
+            }
         })
-        
     },
     methods: { 
         // Credit: https://github.com/xon52/medium-tutorial-vue-maps-example/blob/master/src/App.vue lines 34-41
@@ -244,20 +175,15 @@ if(screen.width <= 600){
         makeAddress(mapsMouseEvent){
             const newStringMaker = this.copyString;
             let geocoder = new window.google.maps.Geocoder(); 
-                    geocoder.geocode( {location: mapsMouseEvent.latLng}, (results) =>{
-                                console.log(results[0]);
+                    geocoder.geocode( {location: mapsMouseEvent.latLng}, (results) => {
                                 const placeString = results[0].address_components[0].long_name + " " +
                                 results[0].address_components[1].long_name;
-                                console.log("inside: "  + placeString);
                                 newStringMaker(placeString);
-                                
-                                
                             });   // end geocode 
                             
         },
         copyString(string){
             this.newAddress = string;
-            console.log("xxxx");
         }
     }
 }

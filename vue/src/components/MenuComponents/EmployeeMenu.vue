@@ -38,8 +38,14 @@
       <div v-for="pothole in updatedPothole" v-bind:key="pothole.id">
       <h3>Update Pothole Information</h3>
         <p>Pothole ID: {{pothole.id}}</p>
-        <p>Address: {{pothole.address}}</p>
-        <p>Lat/Long: {{pothole.latitude}}, {{pothole.longitude}}</p>
+        <!-- <p>Address: {{pothole.address}}</p> -->
+        <label for="address"> Address </label>
+        <input type="text" id="address" class="input-field" v-model="pothole.address"/>
+        <!-- <p>Lat/Long: {{pothole.latitude}}, {{pothole.longitude}}</p> -->
+        <label for="latitude"> Latitude </label>
+        <input type="text" id="latitude" class="input-field" v-model="pothole.latitude"/>
+        <label for="longitude"> Longitude </label>
+        <input type="text" id="longitude" class="input-field" v-model="pothole.longitude"/>
         <p>Date Reported: {{pothole.dateReported}}</p>
       
         <label for="status">Status</label>
@@ -145,6 +151,8 @@ export default {
       submitUpdatedPothole(pothole){
         pothole.severity = parseInt(pothole.severity);
         pothole.statusCode = parseInt(pothole.statusCode);
+        pothole.latitude = parseFloat(pothole.latitude);
+        pothole.longitude = parseFloat(pothole.longitude);
         let filter = this.showFilterForm;
         let db = this.databaseUpdated;
         let text = this.dbTextUpdate;

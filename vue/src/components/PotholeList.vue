@@ -25,28 +25,24 @@ import PotholeService from '../services/PotholeService';
 export default {
     name: "pothole-list",
     data(){
-        return{
+        return {
             potholes:[],
         }
     },
-
     created(){
         PotholeService.listPotholes().then((response) => {
             this.potholes = response.data;
         })
     }
-
-   
 }
 </script>
 
 <style>
-.list{
-      display: flex;
-      flex-direction: column;
-      padding-top: 20px;
-      font-family: Helvetica, sans-serif;
-      font-size: 20px;
+.list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
 }
-
 </style>

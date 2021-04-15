@@ -20,25 +20,24 @@
 </script>
 
 <style>
-  #flexbox{
-    display:flex;
-    justify-content: space-between;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    margin: 0 auto;
-    padding-inline-start: 10px;
-    z-index: 5;
-    height: 100px;
-    background-color: white;
-    align-items: center;
-    border-bottom: solid 5px rgb(230, 226, 228);
-  }
-  #nav {
-    display: flex;
-    /* justify-content: space-between;
-    align-items: center; */
-  }
+#flexbox{
+  display:flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  margin: 0 auto;
+  padding-inline-start: 10px;
+  z-index: 5;
+  height: 100px;
+  background-color: white;
+  align-items: center;
+  border-bottom: solid 5px rgb(230, 226, 228);
+}
+
+#nav {
+  display: flex;
+}
 
 .top {
 font-family: Helvetica, sans-serif;
@@ -50,10 +49,10 @@ vertical-align: middle;
 margin-top: 20%;
 }
 
-  p.top {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
+p.top {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
 #icon{
   display: flex;
@@ -65,6 +64,7 @@ margin-top: 20%;
   height: 100px;
   width: auto;
 }
+
 /* mouse over link */
 .top:hover {
 color: grey;
@@ -79,9 +79,8 @@ text-decoration: none;
   background-color: rgb(242, 242, 242);
 }
 
-
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
-#title{
+#title {
   font-family: "Kanit", Helvetica, sans-serif;
   font-size:45px;
   padding-left: 10px;
@@ -91,11 +90,6 @@ text-decoration: none;
   #app {
     display: flex;
     flex-direction: column;
-    
-
-  }
-  #flexbox {
-    
   }
   
   #router-view {
@@ -122,8 +116,5 @@ text-decoration: none;
     margin-left: 5px;
     margin-right: 5px;
   }
-
-  
-
 }
 </style>
