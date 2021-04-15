@@ -69,12 +69,13 @@ export default {
 
 //************** */
 let report = false;
+
 function CenterControl(controlDiv) {
   // Set CSS for the control border.
   const controlUI = document.createElement("div");
   controlUI.style.backgroundColor = "#fff";
-  controlUI.style.border = "2px solid #fff";
-  controlUI.style.borderRadius = "3px";
+  controlUI.style.border = "2px solid #000";
+  controlUI.style.borderRadius = "5px";
   controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
   controlUI.style.cursor = "pointer";
   controlUI.style.marginTop = "8px";
@@ -86,7 +87,8 @@ function CenterControl(controlDiv) {
   const controlText = document.createElement("div");
   controlText.style.color = "red";
   controlText.style.fontFamily = "Roboto,Arial,sans-serif";
-  controlText.style.fontSize = "18px";
+  controlText.style.fontSize = "20px";
+  controlText.style.fontWeight = "bold"
   controlText.style.lineHeight = "38px";
   controlText.style.paddingLeft = "5px";
   controlText.style.paddingRight = "5px";
@@ -98,11 +100,53 @@ function CenterControl(controlDiv) {
     console.log("REPORT");
 
   });
+ 
 }
+
+//let confirmation = false;
+/*
+function ConfirmControl(confirmDiv) {
+  // Set CSS for the control border.
+  const confirmUI = document.createElement("div");
+  //confirmUI.style.visibility = "hidden";
+  confirmUI.style.backgroundColor = "#fff";
+  confirmUI.style.border = "2px solid #000";
+  confirmUI.style.borderRadius = "5px";
+  confirmUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+  confirmUI.style.cursor = "pointer";
+  confirmUI.style.marginTop = "8px";
+  confirmUI.style.marginBottom = "22px";
+  confirmUI.style.textAlign = "center";
+  confirmUI.title = "Click to Report Pothole";
+  confirmDiv.appendChild(confirmUI);
+  // Set CSS for the control interior.
+  const confirmText = document.createElement("div");
+  confirmText.style.color = "red";
+  confirmText.style.fontFamily = "Roboto,Arial,sans-serif";
+  confirmText.style.fontSize = "20px";
+  confirmText.style.fontWeight = "bold"
+  confirmText.style.lineHeight = "38px";
+  confirmText.style.paddingLeft = "5px";
+  confirmText.style.paddingRight = "5px";
+  confirmText.innerHTML = "Confirm";
+  confirmUI.appendChild(confirmText);
+  // Setup the click event listeners: simply set the map to Chicago.
+  confirmUI.addEventListener("click", () => {
+                //confirmation = false;
+                console.log("CONFIRM");
+
+                });
+ 
+}
+*/
 if(screen.width <= 600){
- const centerControlDiv = document.createElement("div");
+  const centerControlDiv = document.createElement("div");
   CenterControl(centerControlDiv);
   this.map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
+
+
+  
 }
 
 
@@ -111,11 +155,16 @@ if(screen.width <= 600){
             let addToStore = this.updateStore;
            // let insideReport = this.report;
             this.map.addListener("click",(mapsMouseEvent) => {
-                if (report && (window.confirm("Are you sure want to Report this Pothole?"))){
                 
+                //window.google.maps.IconMouseEvent.placeId.stop();
+                
+                if (report && window.confirm("Are you sure you want to delete this pothole?")){
+                //this.map.controls[window.google.maps.ControlPosition.BOTTOM_CENTER].pop(confirmControlDiv);
                 report = false;
 				console.log(mapsMouseEvent.latLng.lat());
                 console.log(screen.width);
+
+                
 
                        
                                 this.pothole.latitude = mapsMouseEvent.latLng.lat();
