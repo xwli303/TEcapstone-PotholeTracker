@@ -1,7 +1,5 @@
-# Final Capstone
-# TEcapstone-PhillyPotholeTracker
 # TEcapstone-PotholeTracker
-# TEcapstone-PotholeTracker
+Welcome to the Philly Pothole Tracker! This is our final capstone project in Tech Elevator, this project is completed thanks to my wonderful teammates Jess, Steven, Dennis, and our instructors Yoav and Caitie.
 
 Run Application.java, it starts up the server
 Open vue folder in VS Code and run npm install, npm run serve to start the application.
